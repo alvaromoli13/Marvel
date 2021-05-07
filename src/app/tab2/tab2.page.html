@@ -3,15 +3,46 @@
     <ion-title>
       Personajes
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="custom"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-grid>
+    <ion-row *ngFor="let oferta of [1,1, 1, 1, 1]">
+      <ion-card button="true" class="cardcontent" (click)="presentModal()">
+        <ion-card-header class="nopadding">
+          <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-img class="imagen" src="assets/Capitan.jpg" height="300"> </ion-img>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card-subtitle class="Titulo" (click)="presentModal()">Capitan America</ion-card-subtitle>
+              <ion-card-subtitle>Saga: Vengadores</ion-card-subtitle>
+              <ion-card-subtitle>Primera Aparicion:</ion-card-subtitle>
+              <ion-card-subtitle>11-04-2012</ion-card-subtitle>
+              
+           </ion-col>
+            <ion-col size="12">
+              <ion-card-subtitle class="description">El Capitán América viste un traje que lleva un motivo de la bandera de los Estados Unidos, y utiliza un escudo casi indestructible que lanza como proyectil. El personaje es generalmente representado como el álter ego de Steve Rogers, un joven frágil mejorado a la cima de la perfección humana por un suero experimental S.S.S. (Suero supersoldado) para ayudar a los esfuerzos inminentes del gobierno de Estados Unidos en la Segunda Guerra Mundial.</ion-card-subtitle>
+            </ion-col>
+            <ion-col   class="third-col">
+              
+            </ion-col>
+          </ion-row> 
+        </ion-grid>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin">
     <ion-fab-button>
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>

@@ -1,0 +1,38 @@
+<ion-header  no-border>
+    <ion-toolbar class="head">
+        <ion-icon name="arrow-back-outline" button="true" (click)="dismiss()" class="back"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+        <ion-row>
+            <ion-col size="12"  class="Titulo">
+                <ion-text>
+                    <h1>Los Vengadores</h1>
+                </ion-text>
+            </ion-col>
+            <ion-col size="12">
+                <ion-img class="imagen" src="assets/Vengadores.jpg" height="200"></ion-img>
+            </ion-col>
+            
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <ion-text>
+                    <ion-icon name="create-outline" class="iconoEditar" *ngIf="admin"></ion-icon>
+                    <ion-icon name="trash-outline" (click)="dismiss()" *ngIf="admin" class="iconoBasura"></ion-icon>
+                    <ion-icon name="star-outline" class="iconoEstrella"></ion-icon>
+                    <ion-icon name="bookmark-outline" class="iconoGuardar"></ion-icon>
+                </ion-text>
+            </ion-col>
+            <ion-col size="12">
+                <ion-text>
+                    <h5>El agente de S.H.I.E.L.D. Nick Furia ha reunido a un grupo de superhéroes para hacer frente a cualquier amenaza que llegue a la Tierra. El equipo lo forman Iron Man, Capitán América, Ojo de Halcón, Viuda Negra, Hulk y Thor.</h5>
+                    <h4>Estreno: 11-04-2012</h4>
+                    <h4>Saga: Vengadores</h4>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
