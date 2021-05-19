@@ -17,6 +17,18 @@ const routes: Routes = [
   {
     path: 'saga',
     loadChildren: () => import('./pages/saga/saga.module').then( m => m.SagaPageModule)
+  },
+  {
+    path: 'nueva-peli',
+    loadChildren: () => import('./pages/nueva-peli/nueva-peli.module').then( m => m.NuevaPeliPageModule)
+  },
+  {
+    path: 'nuevo-personaje',
+    loadChildren: () => import('./pages/nuevo-personaje/nuevo-personaje.module').then( m => m.NuevoPersonajePageModule)
+  },
+  {
+    path: 'nueva-saga',
+    loadChildren: () => import('./pages/nueva-saga/nueva-saga.module').then( m => m.NuevaSagaPageModule)
   }
 ];
 @NgModule({

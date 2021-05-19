@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
 
 @Component({
   selector: 'app-personaje',
@@ -20,5 +21,15 @@ export class PersonajePage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  async presentModal() {
+    const modal = await this.modalCtrl.create({
+      component: NuevoPersonajePage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+      }
+    });
+    return await modal.present();
   }
 }

@@ -12,7 +12,7 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let oferta of [1,1, 1, 1, 1]">
-      <ion-card button="true" class="cardcontent" (click)="presentModal()">
+      <ion-card button="true" class="cardcontent" (click)="abrirSaga()">
         <ion-card-header class="nopadding">
           <ion-grid>
           <ion-row>
@@ -20,7 +20,7 @@
               <ion-img class="imagen" src="assets/Vengadores.jpg" height="300"> </ion-img>
             </ion-col>
             <ion-col size="6">
-              <ion-card-subtitle class="Titulo" (click)="presentModal()">Los Vengadores</ion-card-subtitle>
+              <ion-card-subtitle class="Titulo">Los Vengadores</ion-card-subtitle>
               <ion-card-subtitle>Saga: Vengadores</ion-card-subtitle>
               <ion-card-subtitle>Estreno:</ion-card-subtitle>
               <ion-card-subtitle>11-04-2012</ion-card-subtitle>
@@ -41,7 +41,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin">
-    <ion-fab-button>
+    <ion-fab-button (click)="nuevaSaga()">
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

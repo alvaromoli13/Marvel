@@ -12,7 +12,7 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let oferta of [1,1, 1, 1, 1]">
-      <ion-card button="true" class="cardcontent" (click)="presentModal()">
+      <ion-card button="true" class="cardcontent" (click)="abrirPeli()">
         <ion-card-header class="nopadding">
           <ion-grid>
           <ion-row>
@@ -43,7 +43,7 @@
   
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin">
-    <ion-fab-button>
+    <ion-fab-button (click)="nuevaPeli()">
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

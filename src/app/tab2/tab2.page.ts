@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PersonajePage } from '../pages/personaje/personaje.page';
+import { NuevoPersonajePage } from '../pages/nuevo-personaje/nuevo-personaje.page';
 
 @Component({
   selector: 'app-tab2',
@@ -10,10 +11,20 @@ import { PersonajePage } from '../pages/personaje/personaje.page';
 export class Tab2Page {
 
   constructor(public modalController: ModalController) {}
-
-  async presentModal() {
+  admin=1;
+  async abrirPersonaje() {
     const modal = await this.modalController.create({
       component: PersonajePage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+      }
+    });
+    return await modal.present();
+  }
+
+  async nuevoPersonaje() {
+    const modal = await this.modalController.create({
+      component: NuevoPersonajePage,
       cssClass: 'my-custom-class',
       componentProps: {
       }
