@@ -10,6 +10,18 @@ export class NuevaPeliPage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
 
+  new = 1;
+
+  sagas = [
+    {
+      id: 1,
+      titulo: 'Vengadores'
+    },
+    {
+      id: 2,
+      titulo: 'X-Men'
+    }
+  ]
   ngOnInit() {
   }
 
