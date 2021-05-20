@@ -10,6 +10,17 @@ export class NuevoPersonajePage implements OnInit {
 
   constructor(public modalCtrl:ModalController) { }
 
+  sagas = [
+    {
+      id: 1,
+      titulo: 'Vengadores'
+    },
+    {
+      id: 2,
+      titulo: 'X-Men'
+    }
+  ]
+
   ngOnInit() {
   }
 

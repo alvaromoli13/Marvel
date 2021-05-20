@@ -1,0 +1,25 @@
+ion-label{
+    text-decoration: underline;
+    text-decoration-color: rgb(20, 83, 155);
+}
+
+ion-item{
+    color: rgb(20, 83, 155);
+}
+
+.titulo{
+    color: black;
+}
+
+input[type="submit"] {
+    display: none;
+    align-items: center;
+}
+
+.crear{
+    margin-top:   25px;
+    margin-bottom: 25px;
+    background-color: rgb(20, 83, 155);
+    color:rgb(253, 253, 253);
+    padding: 10px;
+}

@@ -5,5 +5,30 @@
 </ion-header>
 
 <ion-content>
+     <ion-item>
+        <ion-label position="fixed">Nombre</ion-label>
+        <ion-input class="titulo"></ion-input>
+    </ion-item>
 
+    <ion-item>
+        <ion-label>Saga</ion-label>
+        <ion-select  class="saga" placeholder="Selecciona la saga">
+            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.titulo}}</ion-select-option></ion-item>
+        </ion-select>
+  </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Descripcion</ion-label>
+        <ion-textarea rows="6" class="sipnosis"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <label for="img" class="botonimg">Añadir Imagen Personaje</label>
+        <input id="img" type="file" name="imagen"  accept=".jpg, .jpeg, .png">
+    </ion-item>
+
+    <ion-item>
+        <label for="enviar" class="crear">CREAR PERSONAJE</label>  
+        <input id="enviar" type="submit" value="CREAR PELICULA" (click)="registrar()">
+    </ion-item>
 </ion-content>
