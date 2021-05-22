@@ -12,6 +12,8 @@ export class PersonajePage implements OnInit {
   constructor(public modalCtrl: ModalController) { }
 
   admin=1;
+  guarda = 0;
+  gusta = 0;
   ngOnInit() {
   }
 
@@ -31,5 +33,23 @@ export class PersonajePage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  guardar(){
+    if (this.guarda == 1){
+      this.guarda = 0;
+    }
+    else{
+      this.guarda = 1;
+    }
+  }
+
+  meGusta(){
+    if (this.gusta == 1){
+      this.gusta = 0;
+    }
+    else{
+      this.gusta = 1;
+    }
   }
 }

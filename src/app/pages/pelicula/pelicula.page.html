@@ -20,10 +20,16 @@
         <ion-row>
             <ion-col size="12">
                 <ion-text>
+                <div class="admin">
                     <ion-icon name="create-outline" class="iconoEditar" *ngIf="admin" (click)="presentModal()"></ion-icon>
                     <ion-icon name="trash-outline" (click)="presentModal()" *ngIf="admin" class="iconoBasura"></ion-icon>
-                    <ion-icon name="star-outline" class="iconoEstrella"></ion-icon>
-                    <ion-icon name="bookmark-outline" class="iconoGuardar"></ion-icon>
+                </div> 
+                <div class="normal">
+                    <ion-icon name="heart-outline" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 0"></ion-icon>
+                    <ion-icon name="heart" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 1"></ion-icon>
+                    <ion-icon name="bookmark-outline" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 0"></ion-icon>
+                    <ion-icon name="bookmark" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 1"></ion-icon>
+                </div>
                 </ion-text>
             </ion-col>
             <ion-col size="12">
