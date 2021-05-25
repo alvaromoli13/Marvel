@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -9,6 +9,11 @@ import { ModalController } from '@ionic/angular';
 export class NuevaPeliPage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
+  @Input() Titulo: any;
+  @Input() SagaId: any;
+  @Input() FechaEstreno: any;
+  @Input() Sipnosis: any;
+  @Input() Imagen: any;
 
   new = 1;
 

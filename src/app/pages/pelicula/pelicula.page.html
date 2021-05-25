@@ -37,8 +37,28 @@
                     <h5>El agente de S.H.I.E.L.D. Nick Furia ha reunido a un grupo de superhéroes para hacer frente a cualquier amenaza que llegue a la Tierra. El equipo lo forman Iron Man, Capitán América, Ojo de Halcón, Viuda Negra, Hulk y Thor.</h5>
                     <h4>Estreno: 11-04-2012</h4>
                     <h4>Saga: Vengadores</h4>
+                    <h4>Comentarios</h4>
                 </ion-text>
             </ion-col>
+            
         </ion-row>
+        <ion-list>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-label>
+                        <h3>Nombre Usuario</h3>
+                         <p>Cuerpo de un escrito, prescindiendo de las notas, los comentarios, las portadas, las ilustraciones, etc.
+                             "en los márgenes hay unas glosas para facilitar la comprensión del texto"</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option (click)="unread(item)">Ver</ion-item-option>
+                </ion-item-options>
+                <ion-item-options side="start" *ngIf="admin">
+                    <ion-item-option (click)="unread(item)">Bloquear</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        
     </ion-grid>
 </ion-content>

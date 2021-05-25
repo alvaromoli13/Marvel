@@ -10,7 +10,7 @@ import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
 export class PeliculaPage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
-  admin = 1;
+  admin = 0;
   guarda = 0;
   gusta = 0;
 
