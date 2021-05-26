@@ -7,16 +7,16 @@
 <ion-content>
     <ion-item>
         <ion-label position="fixed">Nombre</ion-label>
-        <ion-input class="titulo"></ion-input>
+        <ion-input class="titulo" [formControl]="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating">Fecha Estreno</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Selecciona la Fecha"></ion-datetime>
+        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Selecciona la Fecha" [formControl]="estreno"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <label for="enviar" class="crear">CREAR SAGA</label>  
-        <input id="enviar" type="submit" value="CREAR PELICULA" (click)="registrar()">
+        <input id="enviar" type="submit" value="CREAR SAGA" (click)="registrar()">
     </ion-item>
 </ion-content>

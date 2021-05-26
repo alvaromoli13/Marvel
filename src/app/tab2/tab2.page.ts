@@ -17,6 +17,10 @@ export class Tab2Page {
       component: PersonajePage,
       cssClass: 'my-custom-class',
       componentProps: {
+        'Nombre': "Capitan America",
+        'Descripcion': "",
+        'Imagen': "assets/Capitan.jpg",
+        'SagaId': "Vengadore"
       }
     });
     return await modal.present();

@@ -7,17 +7,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RestService {
 
-  apiUrl = 'https://allsites.es/api/public/api';
+  apiUrl = 'https://f354bdfa7345.ngrok.io/api';
   token: any;
   constructor(private http: HttpClient) { }
 
 
-  login(email: any, password: any) {
+  login(email?: any, password?: any) {
     return new Promise(resolve => {
       this.http.post(this.apiUrl + '/login',
       {
-        email: email,
-        password: password
+        email: 'alvaro@gmail.com',
+        password: 'moli'
       })
         .subscribe(data => {
           this.token = data;

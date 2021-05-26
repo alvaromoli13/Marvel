@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -9,11 +10,14 @@ import { ModalController } from '@ionic/angular';
 export class NuevaPeliPage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
-  @Input() Titulo: any;
-  @Input() SagaId: any;
-  @Input() FechaEstreno: any;
-  @Input() Sipnosis: any;
-  @Input() Imagen: any;
+
+  titulo = new FormControl('');
+  saga = new FormControl('');
+  fechaEstreno = new FormControl('');
+  sipnosis = new FormControl('');
+  imagen = new FormControl('');
+  fechaEstrenoBuena: any;
+  imagenBuena: any;
 
   new = 1;
 
@@ -36,5 +40,19 @@ export class NuevaPeliPage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  ajustarFechaImagen(){
+    this.fechaEstrenoBuena = this.fechaEstreno.value.split('T');
+    this.fechaEstrenoBuena = this.fechaEstrenoBuena[0];
+
+    this.imagenBuena = this.imagen.value.split('\\');
+    this.imagenBuena = this.imagenBuena[2];
+
+  }
+
+  registrar(){
+    this.ajustarFechaImagen()
+    console.log(this.titulo.value,this.saga.value, this.fechaEstrenoBuena, this.imagenBuena, this.sipnosis.value)
   }
 }

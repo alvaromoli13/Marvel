@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
 
@@ -10,6 +10,11 @@ import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
 export class PersonajePage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
+  @Input() Nombre: any;
+  @Input() SagaId: any;
+  @Input() Imagen: any;
+  @Input() Descripcion: any;
+  @Input() PersoId: any;
 
   admin=1;
   guarda = 0;

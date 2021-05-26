@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
 
@@ -10,9 +10,16 @@ import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
 export class PeliculaPage implements OnInit {
 
   constructor(public modalCtrl: ModalController) { }
-  admin = 0;
+  admin = 1;
   guarda = 0;
   gusta = 0;
+
+  @Input() Titulo: any;
+  @Input() SagaId: any;
+  @Input() Imagen: any;
+  @Input() Sipnosis: any;
+  @Input() Estreno: any;
+  @Input() PeliId: any;
 
   ngOnInit() {
   }

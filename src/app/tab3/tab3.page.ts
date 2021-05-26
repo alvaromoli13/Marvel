@@ -13,16 +13,6 @@ export class Tab3Page {
   constructor(public modalController: ModalController) {}
 
   admin = 1;
-  async abrirSaga() {
-    const modal = await this.modalController.create({
-      component: PeliculaPage,
-      cssClass: 'my-custom-class',
-      componentProps: {
-      }
-    });
-    return await modal.present();
-  }
-
   async nuevaSaga() {
     const modal = await this.modalController.create({
       component: NuevaSagaPage,

@@ -9,11 +9,11 @@
         <ion-row>
             <ion-col size="12"  class="Titulo">
                 <ion-text>
-                    <h1>Capitan America</h1>
+                    <h1>{{Nombre}}</h1>
                 </ion-text>
             </ion-col>
             <ion-col size="12">
-                <ion-img class="imagen" src="assets/Capitan.jpg" height="200"></ion-img>
+                <ion-img class="imagen" src="{{Imagen}}" height="200"></ion-img>
             </ion-col>
             
         </ion-row>
@@ -37,9 +37,28 @@
             <ion-col size="12">
                 <ion-text>
                     <h5>El Capitán América viste un traje que lleva un motivo de la bandera de los Estados Unidos, y utiliza un escudo casi indestructible que lanza como proyectil. El personaje es generalmente representado como el álter ego de Steve Rogers, un joven frágil mejorado a la cima de la perfección humana por un suero experimental S.S.S. (Suero supersoldado) para ayudar a los esfuerzos inminentes del gobierno de Estados Unidos en la Segunda Guerra Mundial. </h5>
-                    <h4>Saga: Vengadores</h4>
+                    <h4>Saga: {{SagaId}}</h4>
+                    <h4>Comentarios:</h4>
                 </ion-text>
             </ion-col>
         </ion-row>
+         <ion-list>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-label>
+                        <h3>Nombre Usuario</h3>
+                         <p>Cuerpo de un escrito, prescindiendo de las notas, los comentarios, las portadas, las ilustraciones, etc.
+                             "en los márgenes hay unas glosas para facilitar la comprensión del texto"</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option (click)="unread(item)">Ver</ion-item-option>
+                </ion-item-options>
+                <ion-item-options side="start" *ngIf="admin">
+                    <ion-item-option (click)="unread(item)">Bloquear</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+
     </ion-grid>
 </ion-content>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo-personaje',
@@ -21,6 +22,12 @@ export class NuevoPersonajePage implements OnInit {
     }
   ]
 
+  nombre = new FormControl('');
+  saga = new FormControl('');
+  imagen = new FormControl('');
+  descripcion = new FormControl('');
+  imagenBuena: any;
+
   ngOnInit() {
   }
 
@@ -30,6 +37,16 @@ export class NuevoPersonajePage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  ajustarImagen(){
+    this.imagenBuena = this.imagen.value.split('\\');
+    this.imagenBuena = this.imagenBuena[2];
+  }
+
+  registrar(){
+    this.ajustarImagen()
+    console.log(this.nombre.value, this.descripcion.value, this.saga.value, this.imagenBuena)
   }
 
 }

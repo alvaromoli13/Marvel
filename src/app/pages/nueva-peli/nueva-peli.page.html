@@ -5,30 +5,30 @@
 </ion-header>
 <ion-content>
     <ion-item>
-        <ion-label position="fixed">Título</ion-label>
-        <ion-input class="titulo" value="{{Titulo}}"></ion-input>
+        <ion-label position="fixed">Titulo</ion-label>
+        <ion-input class="titulo"  [formControl]="titulo"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label>Saga</ion-label>
-        <ion-select  class="saga" placeholder="Selecciona la saga">
-            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{SagaId}}">{{saga.titulo}}</ion-select-option></ion-item>
+        <ion-select  class="saga" placeholder="Selecciona la saga" [formControl]="saga">
+            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.titulo}}</ion-select-option></ion-item>
         </ion-select>
   </ion-item>
 
     <ion-item>
         <ion-label position="floating">Fecha Estreno</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Selecciona la Fecha" value="{{FechaEstreno}}"></ion-datetime>
+        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Selecciona la Fecha" [formControl]="fechaEstreno"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating">Sipnosis</ion-label>
-        <ion-textarea rows="6" class="sipnosis" value="{{Sipnosis}}"></ion-textarea>
+        <ion-textarea rows="6" class="sipnosis" [formControl]="sipnosis"></ion-textarea>
     </ion-item>
 
     <ion-item>
         <label for="img" class="botonimg">Añadir Imagen Pelicula</label>
-        <input id="img" type="file" name="imagen"  accept=".jpg, .jpeg, .png" value="{{Imagen}}">
+        <input id="img" type="file" name="imagen"  accept=".jpg, .jpeg, .png" [formControl]="imagen">
     </ion-item>
 
     <ion-item>
