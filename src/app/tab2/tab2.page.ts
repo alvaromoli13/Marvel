@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PersonajePage } from '../pages/personaje/personaje.page';
 import { NuevoPersonajePage } from '../pages/nuevo-personaje/nuevo-personaje.page';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-tab2',
@@ -10,17 +11,27 @@ import { NuevoPersonajePage } from '../pages/nuevo-personaje/nuevo-personaje.pag
 })
 export class Tab2Page {
 
-  constructor(public modalController: ModalController) {}
+  
+
+  constructor(public modalController: ModalController, public restService: RestService) {
+    
+  }
+  personajes: any;
   admin=1;
-  async abrirPersonaje() {
+
+  ionViewDidEnter(){
+    this.getPersonajes()
+  }
+  async abrirPersonaje(nombre, descripcion, imagen, idSaga, persoId) {
     const modal = await this.modalController.create({
       component: PersonajePage,
       cssClass: 'my-custom-class',
       componentProps: {
-        'Nombre': "Capitan America",
-        'Descripcion': "",
-        'Imagen': "assets/Capitan.jpg",
-        'SagaId': "Vengadore"
+        'Nombre': nombre,
+        'Descripcion': descripcion,
+        'Imagen': imagen,
+        'SagaId': idSaga,
+        'PersoId': persoId
       }
     });
     return await modal.present();
@@ -35,5 +46,13 @@ export class Tab2Page {
     });
     return await modal.present();
   }
+
+  async getPersonajes(){
+    this.restService.getCharacters().
+    then(data=>{
+      this.personajes = data.Personajes;
+    })
+  }
+  
 
 }

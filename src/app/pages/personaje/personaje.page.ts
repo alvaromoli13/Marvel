@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-personaje',
@@ -9,7 +10,7 @@ import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
 })
 export class PersonajePage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService) { }
   @Input() Nombre: any;
   @Input() SagaId: any;
   @Input() Imagen: any;
@@ -19,7 +20,15 @@ export class PersonajePage implements OnInit {
   admin=1;
   guarda = 0;
   gusta = 0;
+  saga:any;
   ngOnInit() {
+    this.getSaga();
+  }
+
+  getSaga(){
+    this.restService.getSaga('aa', this.SagaId).then(data =>{
+      this.saga = data.Saga[0].nombre
+    })
   }
 
   dismiss() {

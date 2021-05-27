@@ -36,6 +36,8 @@ export class PeliculaPage implements OnInit {
       component: NuevaPeliPage,
       cssClass: 'my-custom-class',
       componentProps: {
+        'Titulo': "Vengadores",
+        'SagaId': 1
       }
     });
     return await modal.present();

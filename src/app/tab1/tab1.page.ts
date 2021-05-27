@@ -39,10 +39,5 @@ export class Tab1Page {
     return await modal.present();
   }
 
-  login(){
-    this.restService.login().then(data=>{
-      console.log(data)
-    })
-  }
 
 }

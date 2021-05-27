@@ -19,6 +19,9 @@ export class NuevaPeliPage implements OnInit {
   fechaEstrenoBuena: any;
   imagenBuena: any;
 
+  @Input() Titulo: any;
+  @Input() SagaId: any;
+
   new = 1;
 
   sagas = [
@@ -52,7 +55,8 @@ export class NuevaPeliPage implements OnInit {
   }
 
   registrar(){
-    this.ajustarFechaImagen()
-    console.log(this.titulo.value,this.saga.value, this.fechaEstrenoBuena, this.imagenBuena, this.sipnosis.value)
+    this.ajustarFechaImagen();
+    console.log(this.titulo.value,this.saga.value, this.fechaEstrenoBuena, this.imagenBuena, this.sipnosis.value);
+    this.dismiss();
   }
 }

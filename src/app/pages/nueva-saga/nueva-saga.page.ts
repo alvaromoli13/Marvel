@@ -24,8 +24,9 @@ export class NuevaSagaPage implements OnInit {
   }
 
   registrar(){
-    this.ajustarFecha()
-    console.log(this.fechaEstreno, this.nombre.value)
+    this.ajustarFecha();
+    console.log(this.fechaEstreno, this.nombre.value);
+    this.dismiss();
   }
 
   dismiss() {

@@ -45,8 +45,9 @@ export class NuevoPersonajePage implements OnInit {
   }
 
   registrar(){
-    this.ajustarImagen()
-    console.log(this.nombre.value, this.descripcion.value, this.saga.value, this.imagenBuena)
+    this.ajustarImagen();
+    console.log(this.nombre.value, this.descripcion.value, this.saga.value, this.imagenBuena);
+    this.dismiss();
   }
 
 }
