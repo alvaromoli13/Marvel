@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { PeliculaPage } from '../pages/pelicula/pelicula.page';
 import { NuevaSagaPage } from '../pages/nueva-saga/nueva-saga.page';
 import { RestService } from '../services/rest.service';
@@ -11,7 +11,7 @@ import { RestService } from '../services/rest.service';
 })
 export class Tab3Page {
 
-  constructor(public modalController: ModalController, public restService: RestService) {}
+  constructor(public modalController: ModalController, public restService: RestService, public alertController: AlertController) {}
 
   sagas:any;
   ionViewDidEnter(){
@@ -32,6 +32,30 @@ export class Tab3Page {
     this.restService.getSagas().then(data=>{
       this.sagas = data.Sagas;
     })
+  }
+
+  async deleteSaga(idSaga) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Seguro deseas BORRAR la saga seleccionada!',
+      message: '',
+      buttons: [
+        {
+          text: 'No',
+          handler: (blah) => {
+            
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            this.restService.deleteSaga('aaa', idSaga).then(data=>{
+              console.log(data)
+            })
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

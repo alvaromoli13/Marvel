@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormControl } from '@angular/forms';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-nuevo-personaje',
@@ -9,26 +10,18 @@ import { FormControl } from '@angular/forms';
 })
 export class NuevoPersonajePage implements OnInit {
 
-  constructor(public modalCtrl:ModalController) { }
+  constructor(public modalCtrl:ModalController, public restService: RestService) { }
 
-  sagas = [
-    {
-      id: 1,
-      titulo: 'Vengadores'
-    },
-    {
-      id: 2,
-      titulo: 'X-Men'
-    }
-  ]
 
   nombre = new FormControl('');
   saga = new FormControl('');
   imagen = new FormControl('');
   descripcion = new FormControl('');
   imagenBuena: any;
+  sagas: any;
 
   ngOnInit() {
+    this.getsagas()
   }
 
   dismiss() {
@@ -44,9 +37,17 @@ export class NuevoPersonajePage implements OnInit {
     this.imagenBuena = this.imagenBuena[2];
   }
 
+  getsagas(){
+    this.restService.getSagas().then(data=>{
+      this.sagas = data.Sagas
+    })
+  }
+
   registrar(){
     this.ajustarImagen();
-    console.log(this.nombre.value, this.descripcion.value, this.saga.value, this.imagenBuena);
+    this.restService.createCharacter(this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
+      console.log(data)
+    })
     this.dismiss();
   }
 

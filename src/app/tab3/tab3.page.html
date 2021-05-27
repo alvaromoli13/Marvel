@@ -12,16 +12,23 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let saga of sagas">
-      <ion-card button="true" class="cardcontent">
-        <ion-card-header class="nopadding">
-          <ion-row>
-            <ion-col size="12">
-              <ion-card-title class="Titulo">{{saga.nombre}}</ion-card-title>
-              <ion-card-title class="Fecha">{{saga.estreno}}</ion-card-title>
-           </ion-col>
-          </ion-row> 
-        </ion-card-header>
-      </ion-card>
+      <ion-item-sliding>
+        <ion-item lines="none">
+          <ion-card button="true" class="cardcontent">
+            <ion-card-header class="nopadding">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-card-title class="Titulo">{{saga.nombre}}</ion-card-title>
+                  <ion-card-title class="Fecha">{{saga.estreno}}</ion-card-title>
+                </ion-col>
+              </ion-row> 
+              </ion-card-header>
+            </ion-card>
+          </ion-item>
+        <ion-item-options side="start">
+          <ion-item-option (click)="deleteSaga(saga.id)" color="danger">Eliminar<ion-icon name="trash-outline"></ion-icon></ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-row>
   </ion-grid>
 

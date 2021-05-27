@@ -13,7 +13,7 @@
     <ion-item>
         <ion-label>Saga</ion-label>
         <ion-select  class="saga" placeholder="Selecciona la saga" [formControl]="saga">
-            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.titulo}}</ion-select-option></ion-item>
+            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.nombre}}</ion-select-option></ion-item>
         </ion-select>
   </ion-item>
 

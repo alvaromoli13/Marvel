@@ -95,6 +95,25 @@ export class RestService {
     });
   }
 
+  async createSaga(nombre:any, estreno:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/sagas',
+      {
+        nombre: nombre,
+        estreno: estreno,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+
   async getSaga(tok?: any, id?:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/sagas/'+id, {
@@ -111,6 +130,19 @@ export class RestService {
   async getSagas(tok?: any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/sagas', {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async deleteSaga(tok?: any, id?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/sagas/'+id, {
         // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
       })
         .subscribe(data => {

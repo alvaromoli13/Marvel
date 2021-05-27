@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormControl } from '@angular/forms';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-nueva-saga',
@@ -9,7 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class NuevaSagaPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService) { }
 
   estreno = new FormControl('');
   nombre = new FormControl('');
@@ -25,7 +26,9 @@ export class NuevaSagaPage implements OnInit {
 
   registrar(){
     this.ajustarFecha();
-    console.log(this.fechaEstreno, this.nombre.value);
+    this.restService.createSaga(this.nombre.value, this.fechaEstreno).then(data=>{
+      console.log(data);
+    })
     this.dismiss();
   }
 
