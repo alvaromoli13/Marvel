@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-pelicula',
@@ -9,10 +10,11 @@ import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
 })
 export class PeliculaPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService) { }
   admin = 1;
   guarda = 0;
   gusta = 0;
+  saga: any;
 
   @Input() Titulo: any;
   @Input() SagaId: any;
@@ -36,11 +38,15 @@ export class PeliculaPage implements OnInit {
       component: NuevaPeliPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        'Titulo': "Vengadores",
-        'SagaId': 1
       }
     });
     return await modal.present();
+  }
+
+  getSaga(){
+    this.restService.getSaga('aa', this.SagaId).then(data =>{
+      this.saga = data.Saga[0].nombre
+    })
   }
 
   guardar(){

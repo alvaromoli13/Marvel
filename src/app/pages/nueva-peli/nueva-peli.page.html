@@ -6,13 +6,13 @@
 <ion-content>
     <ion-item>
         <ion-label position="fixed">Titulo</ion-label>
-        <ion-input class="titulo"  [formControl]="titulo" [(ngModel)]="Titulo"></ion-input>
+        <ion-input class="titulo"  [formControl]="titulo"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label>Saga</ion-label>
         <ion-select  class="saga" placeholder="Selecciona la saga" [formControl]="saga">
-            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.titulo}}</ion-select-option></ion-item>
+            <ion-item *ngFor="let saga of sagas"><ion-select-option value="{{saga.id}}">{{saga.nombre}}</ion-select-option></ion-item>
         </ion-select>
   </ion-item>
 
@@ -22,8 +22,8 @@
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating">Sipnosis</ion-label>
-        <ion-textarea rows="6" class="sipnosis" [formControl]="sipnosis"></ion-textarea>
+        <ion-label position="floating">Sinopsis</ion-label>
+        <ion-textarea rows="6" class="sipnosis" [formControl]="sinopsis"></ion-textarea>
     </ion-item>
 
     <ion-item>

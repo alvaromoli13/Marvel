@@ -12,18 +12,23 @@ import { RestService } from '../services/rest.service';
 export class Tab1Page {
 
   admin = 1;
+  peliculas: any;
   constructor(public modalController: ModalController, public restService: RestService) {}
 
-  async abrirPeli() {
+  ionViewDidEnter(){
+    this.getPelis();
+  }
+  async abrirPeli(titulo, sagaid, imagen, sipnosis, estreno, peliId) {
     const modal = await this.modalController.create({
       component: PeliculaPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        'Titulo': "Los Vengadores",
-        'SagaId': "Vengadores",
-        'Imagen': "assets/Vengadores.jpg",
-        'Sipnosis': "",
-        'Estreno': "11-04-2012"
+        'Titulo': titulo,
+        'SagaId': sagaid,
+        'Imagen': imagen,
+        'Sipnosis': sipnosis,
+        'Estreno': estreno,
+        'PeliId': peliId
       }
     });
     return await modal.present();
@@ -39,5 +44,10 @@ export class Tab1Page {
     return await modal.present();
   }
 
+  getPelis(){
+    this.restService.getFilms().then(data=>{
+      this.peliculas = data.Peliculas;
+    })
+  }
 
 }

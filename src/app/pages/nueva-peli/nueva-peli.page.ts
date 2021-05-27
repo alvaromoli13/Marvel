@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-nueva-peli',
@@ -9,12 +10,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class NuevaPeliPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService) { }
 
   titulo = new FormControl('');
   saga = new FormControl('');
   fechaEstreno = new FormControl('');
-  sipnosis = new FormControl('');
+  sinopsis = new FormControl('');
   imagen = new FormControl('');
   fechaEstrenoBuena: any;
   imagenBuena: any;
@@ -24,17 +25,9 @@ export class NuevaPeliPage implements OnInit {
 
   new = 1;
 
-  sagas = [
-    {
-      id: 1,
-      titulo: 'Vengadores'
-    },
-    {
-      id: 2,
-      titulo: 'X-Men'
-    }
-  ]
+  sagas: any;
   ngOnInit() {
+    this.getsagas()
   }
 
   dismiss() {
@@ -56,7 +49,15 @@ export class NuevaPeliPage implements OnInit {
 
   registrar(){
     this.ajustarFechaImagen();
-    console.log(this.titulo.value,this.saga.value, this.fechaEstrenoBuena, this.imagenBuena, this.sipnosis.value);
+    this.restService.createFilm(this.titulo.value, this.sinopsis.value, this.imagenBuena, this.saga.value, this.fechaEstrenoBuena).then(data=>{
+      console.log(data);
+    })
     this.dismiss();
+  }
+
+  getsagas(){
+    this.restService.getSagas().then(data=>{
+      this.sagas = data.Sagas
+    })
   }
 }

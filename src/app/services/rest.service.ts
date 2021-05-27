@@ -74,14 +74,15 @@ export class RestService {
     });
   }
 
-  async createFilm(nombre:any, descripcion:any, imagen:any, idSaga:any) {
+  async createFilm(nombre:any, descripcion:any, imagen:any, idSaga:any, estreno:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/peliculas',
       {
         nombre: nombre,
-        descripcion: descripcion,
+        sipnosis: descripcion,
         imagen: imagen,
-        idSaga: idSaga
+        idSaga: idSaga,
+        estreno: estreno
       },
       {
         // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
@@ -97,6 +98,19 @@ export class RestService {
   async getSaga(tok?: any, id?:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/sagas/'+id, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async getSagas(tok?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/sagas', {
         // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
       })
         .subscribe(data => {

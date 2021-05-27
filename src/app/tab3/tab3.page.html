@@ -1,39 +1,25 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
       Sagas
     </ion-title>
     <ion-buttons slot="end">
-      <ion-menu-button menu="custom"></ion-menu-button>
+      <ion-menu-button menu="custom" color="light"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let oferta of [1,1, 1, 1, 1]">
+    <ion-row *ngFor="let saga of sagas">
       <ion-card button="true" class="cardcontent">
         <ion-card-header class="nopadding">
-          <ion-grid>
           <ion-row>
-            <ion-col size="6">
-              <ion-img class="imagen" src="assets/Vengadores.jpg" height="300"> </ion-img>
-            </ion-col>
-            <ion-col size="6">
-              <ion-card-subtitle class="Titulo">Los Vengadores</ion-card-subtitle>
-              <ion-card-subtitle>Saga: Vengadores</ion-card-subtitle>
-              <ion-card-subtitle>Estreno:</ion-card-subtitle>
-              <ion-card-subtitle>11-04-2012</ion-card-subtitle>
-              
-           </ion-col>
             <ion-col size="12">
-              <ion-card-subtitle class="description">El agente de S.H.I.E.L.D. Nick Furia ha reunido a un grupo de superhéroes para hacer frente a cualquier amenaza que llegue a la Tierra. El equipo lo forman Iron Man, Capitán América, Ojo de Halcón, Viuda Negra, Hulk y Thor.</ion-card-subtitle>
-            </ion-col>
-            <ion-col   class="third-col">
-              
-            </ion-col>
+              <ion-card-title class="Titulo">{{saga.nombre}}</ion-card-title>
+              <ion-card-title class="Fecha">{{saga.estreno}}</ion-card-title>
+           </ion-col>
           </ion-row> 
-        </ion-grid>
         </ion-card-header>
       </ion-card>
     </ion-row>
@@ -41,7 +27,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin">
-    <ion-fab-button (click)="nuevaSaga()">
+    <ion-fab-button (click)="nuevaSaga()" class="iconoCrear" color="danger">
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

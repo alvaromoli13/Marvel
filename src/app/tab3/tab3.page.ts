@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PeliculaPage } from '../pages/pelicula/pelicula.page';
 import { NuevaSagaPage } from '../pages/nueva-saga/nueva-saga.page';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-tab3',
@@ -10,8 +11,12 @@ import { NuevaSagaPage } from '../pages/nueva-saga/nueva-saga.page';
 })
 export class Tab3Page {
 
-  constructor(public modalController: ModalController) {}
+  constructor(public modalController: ModalController, public restService: RestService) {}
 
+  sagas:any;
+  ionViewDidEnter(){
+    this.getSagas()
+  }
   admin = 1;
   async nuevaSaga() {
     const modal = await this.modalController.create({
@@ -21,6 +26,12 @@ export class Tab3Page {
       }
     });
     return await modal.present();
+  }
+
+  getSagas(){
+    this.restService.getSagas().then(data=>{
+      this.sagas = data.Sagas;
+    })
   }
 
 }
