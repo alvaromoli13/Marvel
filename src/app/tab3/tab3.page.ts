@@ -37,7 +37,7 @@ export class Tab3Page {
   async deleteSaga(idSaga) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Seguro deseas BORRAR la saga seleccionada!',
+      header: '¿Seguro deseas eliminar la saga seleccionada?',
       message: '',
       buttons: [
         {

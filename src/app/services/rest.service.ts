@@ -152,4 +152,30 @@ export class RestService {
         });
     });
   }
+
+  async deleteFilm(tok?: any, id?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/peliculas/'+id, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async deleteCharacter(tok?: any, id?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/personajes/'+id, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
 }

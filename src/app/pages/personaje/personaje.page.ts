@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { NuevoPersonajePage } from '../nuevo-personaje/nuevo-personaje.page';
 import { RestService } from '../../services/rest.service';
 
@@ -10,7 +10,7 @@ import { RestService } from '../../services/rest.service';
 })
 export class PersonajePage implements OnInit {
 
-  constructor(public modalCtrl: ModalController, public restService: RestService) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService, public alertController: AlertController) { }
   @Input() Nombre: any;
   @Input() SagaId: any;
   @Input() Imagen: any;
@@ -66,4 +66,29 @@ export class PersonajePage implements OnInit {
       this.gusta = 1;
     }
   }
+
+  async eliminarPersonaje(idPersonaje) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: '¿Seguro deseas eliminar el personaje?',
+      message: '',
+      buttons: [
+        {
+          text: 'No',
+          handler: (blah) => {
+            
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            this.restService.deleteCharacter('aaa', idPersonaje).then(data=>{
+              console.log(data)
+            })
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
 }

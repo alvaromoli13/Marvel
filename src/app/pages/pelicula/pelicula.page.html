@@ -22,7 +22,7 @@
                 <ion-text>
                 <div class="admin">
                     <ion-icon name="create-outline" class="iconoEditar" *ngIf="admin" (click)="presentModal()"></ion-icon>
-                    <ion-icon name="trash-outline" *ngIf="admin" class="iconoBasura"></ion-icon>
+                    <ion-icon name="trash-outline" *ngIf="admin" (click)="eliminarPeli(PeliId)" class="iconoBasura"></ion-icon>
                 </div> 
                 <div class="normal">
                     <ion-icon name="heart-outline" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 0"></ion-icon>
