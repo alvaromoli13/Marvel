@@ -11,7 +11,7 @@ import { RestService } from '../../services/rest.service';
 export class PeliculaPage implements OnInit {
 
   constructor(public modalCtrl: ModalController, public restService: RestService, public alertController : AlertController) { }
-  admin = 1;
+  admin = this.restService.token.success.admin;
   guarda = 0;
   gusta = 0;
   saga: any;
@@ -119,7 +119,7 @@ export class PeliculaPage implements OnInit {
         }, {
           text: 'Crear',
           handler: (dato) => {
-            console.log(dato.comentario);
+            this.restService.crearComentario(dato.comentario, this.restService.token.success.id, this.PeliId)
           }
         }
       ]

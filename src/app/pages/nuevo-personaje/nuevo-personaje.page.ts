@@ -45,7 +45,7 @@ export class NuevoPersonajePage implements OnInit {
 
   registrar(){
     this.ajustarImagen();
-    this.restService.createCharacter(this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
+    this.restService.createCharacter(this.restService.token.success.token,this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
       console.log(data)
     })
     this.dismiss();

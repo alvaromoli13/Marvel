@@ -11,7 +11,7 @@ import { RestService } from '../services/rest.service';
 })
 export class Tab1Page {
 
-  admin = 1;
+  admin = this.restService.token.success.admin;
   peliculas: any;
   constructor(public modalController: ModalController, public restService: RestService) {}
 
@@ -45,7 +45,7 @@ export class Tab1Page {
   }
 
   getPelis(){
-    this.restService.getFilms().then(data=>{
+    this.restService.getFilms(this.restService.token.success.token).then(data=>{
       this.peliculas = data.Peliculas;
     })
   }

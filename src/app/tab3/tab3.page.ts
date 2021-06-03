@@ -17,7 +17,7 @@ export class Tab3Page {
   ionViewDidEnter(){
     this.getSagas()
   }
-  admin = 1;
+  admin = this.restService.token.success.admin;
   async nuevaSaga() {
     const modal = await this.modalController.create({
       component: NuevaSagaPage,

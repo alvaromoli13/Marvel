@@ -25,7 +25,7 @@
               </ion-card-header>
             </ion-card>
           </ion-item>
-        <ion-item-options side="start">
+        <ion-item-options side="start" *ngIf="admin">
           <ion-item-option (click)="deleteSaga(saga.id)" color="danger">Eliminar<ion-icon name="trash-outline"></ion-icon></ion-item-option>
         </ion-item-options>
       </ion-item-sliding>

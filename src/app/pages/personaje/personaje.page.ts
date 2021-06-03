@@ -17,7 +17,7 @@ export class PersonajePage implements OnInit {
   @Input() Descripcion: any;
   @Input() PersoId: any;
 
-  admin=1;
+  admin=this.restService.token.success.admin;
   guarda = 0;
   gusta = 0;
   saga:any;

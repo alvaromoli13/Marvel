@@ -9,13 +9,11 @@ export class RestService {
 
   apiUrl = 'http://marvelfilms.allsites.es/public/api';
   token: any;
-  id: any;
-  admin: any;
   constructor(private http: HttpClient) { }
 
 
   login(email:any, password:any) {
-    return new Promise(resolve => {
+    return new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/login',
       {
         email: email,
@@ -30,10 +28,10 @@ export class RestService {
     });
   }
 
-  async getCharacters(tok?: any) {
+  async getCharacters(tok: any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/personajes', {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -43,10 +41,10 @@ export class RestService {
     });
   }
 
-  async getFilms(tok?: any) {
+  async getFilms(tok: any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/peliculas', {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -56,7 +54,7 @@ export class RestService {
     });
   }
 
-  async createCharacter(nombre:any, descripcion:any, imagen:any, idSaga:any) {
+  async createCharacter(tok:any, nombre:any, descripcion:any, imagen:any, idSaga:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/personajes',
       {
@@ -66,7 +64,7 @@ export class RestService {
         idSaga: idSaga
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);

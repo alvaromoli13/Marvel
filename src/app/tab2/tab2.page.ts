@@ -17,7 +17,7 @@ export class Tab2Page {
     
   }
   personajes: any;
-  admin=1;
+  admin=this.restService.token.success.admin;
 
   ionViewDidEnter(){
     this.getPersonajes()
@@ -48,7 +48,7 @@ export class Tab2Page {
   }
 
   async getPersonajes(){
-    this.restService.getCharacters().
+    this.restService.getCharacters(this.restService.token.success.token).
     then(data=>{
       this.personajes = data.Personajes;
     })
