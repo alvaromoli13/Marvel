@@ -1,0 +1,20 @@
+<ion-content>
+  <section class="ppal">
+    <ion-img alt="logo" src="/assets/Marvel.jpg"></ion-img>
+    <div class="login" *ngIf="registrado">
+      <input type="email" name="email" placeholder="Email" [formControl]="email">
+      <input type="password" name="password" placeholder="Contraseña" [formControl]="password">
+      <span button="true" (click)=login()>INICIAR SESION</span>
+      <p button="true" (click)=registrarse()>Registrarse</p>
+    </div>
+
+    <div class="login" *ngIf="noRegistrado">
+      <input type="text" name="name" placeholder="Nombre" [formControl]="name">
+      <input type="email" name="email" placeholder="Email" [formControl]="email">
+      <input type="password" name="password" placeholder="Contraseña" [formControl]="password">
+      <input type="password" name="c_password" placeholder="Confirmar Contraseña" [formControl]="c_password">
+      <span button="true" (click)=crearCuenta()>CREAR CUENTA</span>
+      <p button="true" (click)=modoInicio()>¿Ya tienes una cuenta? Inicia Sesion</p>
+    </div>
+  </section>
+</ion-content>

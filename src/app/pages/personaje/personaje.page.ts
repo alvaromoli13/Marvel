@@ -91,4 +91,7 @@ export class PersonajePage implements OnInit {
     await alert.present();
   }
 
+
+ 
+
 }

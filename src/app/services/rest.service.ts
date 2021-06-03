@@ -9,6 +9,8 @@ export class RestService {
 
   apiUrl = 'http://marvelfilms.allsites.es/public/api';
   token: any;
+  id: any;
+  admin: any;
   constructor(private http: HttpClient) { }
 
 
@@ -178,4 +180,67 @@ export class RestService {
         });
     });
   }
+
+  async getComentarios(tok?: any, id?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/comentariosPeli/'+id, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async bloquearComentario(id:any) {
+    return await new Promise<any>(resolve => {
+      this.http.put(this.apiUrl + '/comentarios/'+id,
+      {
+        bloqueado: 1,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async crearComentario(descripcion:any, idUsuario:any, idPelicula:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/comentarios',
+      {
+        descripcion: descripcion,
+        idUsuario: idUsuario,
+        idPelicula: idPelicula
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async getComentario(tok?: any, id?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/comentarios/'+id, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
 }

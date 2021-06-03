@@ -1,0 +1,76 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+
+    
+
+}
+.ppal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+
+    
+}
+
+ion-img::part(image) {
+
+   height: 150px;
+   width: auto;
+   margin-bottom: 40px;
+    
+  }
+  input[type="text"] {
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+    color:rgb(0, 0, 0, 0.65)
+  }
+
+  input[type="email"] {
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+    color:rgb(0, 0, 0, 0.65)
+  }
+
+  input[type="password"] {
+    
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+    color:rgb(0, 0, 0, 0.65)
+  }
+
+  span{
+    margin-top: 30px;
+    background-color: #A71A23;
+    padding: 10px;
+    color:white;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  p{
+      color: rgba(0, 0, 0, 0.65);
+  }
+  
+  p:active{
+      color:#A71A23;
+  }
+  
+  section{
+    font-family: 'Montserrat', sans-serif;
+  }
+  div{
+    font-family: 'Montserrat', sans-serif;
+  }
