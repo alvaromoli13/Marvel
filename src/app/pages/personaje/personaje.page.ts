@@ -20,9 +20,15 @@ export class PersonajePage implements OnInit {
   admin=this.restService.token.success.admin;
   guarda = 0;
   gusta = 0;
+  meGustas:any
   saga:any;
+
   ngOnInit() {
     this.getSaga();
+  }
+
+  ionViewWillEnter(){
+    this.mostrarMeGustas()
   }
 
   getSaga(){
@@ -59,12 +65,25 @@ export class PersonajePage implements OnInit {
   }
 
   meGusta(){
-    if (this.gusta == 1){
-      this.gusta = 0;
-    }
-    else{
-      this.gusta = 1;
-    }
+    this.restService.crearMeGustaPersonaje(this.restService.token.success.id, this.PersoId)
+    this.gusta = 1;
+  }
+
+  noMeGusta(){
+    this.restService.deleteMeGustaPersonaje('token',this.PersoId, this.restService.token.success.id)
+    this.gusta = 0;
+  }
+
+  mostrarMeGustas(){
+    this.restService.getMeGustaTotalesPersonaje('token', this.PersoId).then(data=>{
+      this.meGustas = data.MeGusta;
+      console.log(this.restService.token.success.id)
+      for(let i = 0; i<this.meGustas.length; i++){
+        if(this.meGustas[i].idUsuario == this.restService.token.success.id){
+          this.gusta = 1
+        }
+      }
+    })
   }
 
   async eliminarPersonaje(idPersonaje) {

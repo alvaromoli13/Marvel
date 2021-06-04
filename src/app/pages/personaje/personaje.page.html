@@ -21,8 +21,9 @@
             <ion-col size="12">
                     <ion-text class="derecha">
                         <div class="normal">
+                            <span class="iconoEstrella">{{this.meGustas.length}}</span>
                             <ion-icon name="heart-outline" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 0"></ion-icon>
-                            <ion-icon name="heart" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 1"></ion-icon>
+                            <ion-icon name="heart" class="iconoEstrella" (click)="noMeGusta()" *ngIf="gusta == 1"></ion-icon>
                             <ion-icon name="bookmark-outline" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 0"></ion-icon>
                             <ion-icon name="bookmark" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 1"></ion-icon>
                         </div>

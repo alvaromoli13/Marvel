@@ -241,4 +241,50 @@ export class RestService {
     });
   }
 
+  async getMeGustaTotalesPersonaje(tok?: any, idPersonaje?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/meGustaPersonaje/'+idPersonaje, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async crearMeGustaPersonaje(idUsuario:any, idPersonaje:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/meGustaPersonajes',
+      {
+        idUsuario: idUsuario,
+        idPersonaje: idPersonaje,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async deleteMeGustaPersonaje(tok?: any, idPersonaje?: any, idUsuario?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/eliminarMPersonaje/'+idPersonaje+'.'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  
+
 }
