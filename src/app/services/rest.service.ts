@@ -285,6 +285,138 @@ export class RestService {
     });
   }
 
+  async getGuardadosTotalesPersonaje(tok?: any, idPersonaje?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/guardadoPersonaje/'+idPersonaje, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async crearGuardadoPersonaje(idUsuario:any, idPersonaje:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/guardadoPersonajes',
+      {
+        idUsuario: idUsuario,
+        idPersonaje: idPersonaje,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async deleteGuardadoPersonaje(tok?: any, idPersonaje?: any, idUsuario?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/eliminarGPersonaje/'+idPersonaje+'.'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async getMeGustaTotalesPelicula(tok?: any, idPelicula?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/meGustaPelicula/'+idPelicula, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async crearMeGustaPelicula(idUsuario:any, idPelicula:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/meGustaPeliculas',
+      {
+        idUsuario: idUsuario,
+        idPelicula: idPelicula,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+   
+  async deleteMeGustaPelicula(tok?: any, idPelicula?: any, idUsuario?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/eliminarMPelicula/'+idPelicula+'.'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async getGuardadosTotalesPelicula(tok?: any, idPelicula?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/guardadoPelicula/'+idPelicula, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async crearGuardadoPelicula(idUsuario:any, idPelicula:any) {
+    return await new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/guardadoPeliculas',
+      {
+        idUsuario: idUsuario,
+        idPelicula: idPelicula,
+      },
+      {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async deleteGuardadoPelicula(tok?: any, idPelicula?: any, idUsuario?: any) {
+    return await new Promise<any>(resolve => {
+      this.http.delete(this.apiUrl + '/eliminarGPelicula/'+idPelicula+'.'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
   
 
 }

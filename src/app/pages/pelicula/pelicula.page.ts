@@ -16,6 +16,8 @@ export class PeliculaPage implements OnInit {
   gusta = 0;
   saga: any;
   comentarios:any;
+  meGustas:any
+  guardados:any;
 
   @Input() Titulo: any;
   @Input() SagaId: any;
@@ -30,6 +32,8 @@ export class PeliculaPage implements OnInit {
   ionViewDidEnter(){
     this.getComentarios();
     this.getSaga();
+    this.mostrarGuardados();
+    this.mostrarMeGustas();
   }
   dismiss() {
     // using the injected ModalController this page
@@ -56,21 +60,45 @@ export class PeliculaPage implements OnInit {
   }
 
   guardar(){
-    if (this.guarda == 1){
-      this.guarda = 0;
-    }
-    else{
-      this.guarda = 1;
-    }
+    this.restService.crearGuardadoPelicula(this.restService.token.success.id, this.PeliId);
+    this.guarda = 1;
+  }
+
+  noGuardar(){
+    this.restService.deleteGuardadoPelicula('tok', this.PeliId, this.restService.token.success.id);
+    this.guarda=0;
   }
 
   meGusta(){
-    if (this.gusta == 1){
-      this.gusta = 0;
-    }
-    else{
-      this.gusta = 1;
-    }
+    this.restService.crearMeGustaPelicula(this.restService.token.success.id, this.PeliId);
+    this.gusta = 1;
+  }
+  
+  noMeGusta(){
+    this.restService.deleteMeGustaPelicula('tok', this.PeliId, this.restService.token.success.id);
+    this.gusta = 0;
+  }
+
+  mostrarGuardados(){
+    this.restService.getGuardadosTotalesPelicula('token', this.PeliId).then(data=>{
+      this.guardados = data.Guardado;
+      for(let i = 0; i<this.guardados.length; i++){
+        if(this.guardados[i].idUsuario == this.restService.token.success.id){
+          this.guarda = 1
+        }
+      }
+    })
+  }
+
+  mostrarMeGustas(){
+    this.restService.getMeGustaTotalesPelicula('token', this.PeliId).then(data=>{
+      this.meGustas = data.MeGusta;
+      for(let i = 0; i<this.meGustas.length; i++){
+        if(this.meGustas[i].idUsuario == this.restService.token.success.id){
+          this.gusta = 1
+        }
+      }
+    })
   }
 
   async eliminarPeli(idPeli) {

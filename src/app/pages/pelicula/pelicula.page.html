@@ -25,10 +25,11 @@
                     <ion-icon name="trash-outline" *ngIf="admin" (click)="eliminarPeli(PeliId)" class="iconoBasura"></ion-icon>
                 </div> 
                 <div class="normal">
+                    <span class="iconoEstrella">{{this.meGustas.length}}</span>
                     <ion-icon name="heart-outline" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 0"></ion-icon>
-                    <ion-icon name="heart" class="iconoEstrella" (click)="meGusta()" *ngIf="gusta == 1"></ion-icon>
+                    <ion-icon name="heart" class="iconoEstrella" (click)="noMeGusta()" *ngIf="gusta == 1"></ion-icon>
                     <ion-icon name="bookmark-outline" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 0"></ion-icon>
-                    <ion-icon name="bookmark" class="iconoGuardar" (click)="guardar()" *ngIf="guarda == 1"></ion-icon>
+                    <ion-icon name="bookmark" class="iconoGuardar" (click)="noGuardar()" *ngIf="guarda == 1"></ion-icon>
                 </div>
                 </ion-text>
             </ion-col>
