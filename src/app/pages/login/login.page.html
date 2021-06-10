@@ -4,7 +4,7 @@
     <div class="login" *ngIf="registrado">
       <input type="email" name="email" placeholder="Email" [formControl]="email">
       <input type="password" name="password" placeholder="Contraseña" [formControl]="password">
-      <span button="true" (click)=login()>INICIAR SESION</span>
+      <span button="true" (click)=login()>Iniciar Sesion</span>
       <p button="true" (click)=registrarse()>Registrarse</p>
     </div>
 
@@ -13,7 +13,7 @@
       <input type="email" name="email" placeholder="Email" [formControl]="email">
       <input type="password" name="password" placeholder="Contraseña" [formControl]="password">
       <input type="password" name="c_password" placeholder="Confirmar Contraseña" [formControl]="c_password">
-      <span button="true" (click)=crearCuenta()>CREAR CUENTA</span>
+      <span button="true" (click)=crearCuenta()>Crear Cuenta</span>
       <p button="true" (click)=modoInicio()>¿Ya tienes una cuenta? Inicia Sesion</p>
     </div>
   </section>

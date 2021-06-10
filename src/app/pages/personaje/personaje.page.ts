@@ -23,6 +23,7 @@ export class PersonajePage implements OnInit {
   meGustas:any
   guardados:any;
   saga:any;
+  interval:any;
 
   ngOnInit() {
     this.getSaga();
@@ -67,14 +68,19 @@ export class PersonajePage implements OnInit {
     this.guarda = 0;
   }
 
-  meGusta(){
-    this.restService.crearMeGustaPersonaje(this.restService.token.success.id, this.PersoId)
+  async meGusta(){
+    await this.restService.crearMeGustaPersonaje(this.restService.token.success.id, this.PersoId);
+    await this.mostrarMeGustas();
     this.gusta = 1;
+  
+    
   }
 
-  noMeGusta(){
-    this.restService.deleteMeGustaPersonaje('token',this.PersoId, this.restService.token.success.id)
+  async noMeGusta(){
+    await this.restService.deleteMeGustaPersonaje('token',this.PersoId, this.restService.token.success.id);
+    await this.mostrarMeGustas();
     this.gusta = 0;
+    
   }
 
   mostrarGuardados(){
@@ -88,7 +94,7 @@ export class PersonajePage implements OnInit {
     })
   }
 
-  mostrarMeGustas(){
+  async mostrarMeGustas(){
     this.restService.getMeGustaTotalesPersonaje('token', this.PersoId).then(data=>{
       this.meGustas = data.MeGusta;
       for(let i = 0; i<this.meGustas.length; i++){

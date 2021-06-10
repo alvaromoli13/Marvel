@@ -69,13 +69,15 @@ export class PeliculaPage implements OnInit {
     this.guarda=0;
   }
 
-  meGusta(){
-    this.restService.crearMeGustaPelicula(this.restService.token.success.id, this.PeliId);
+  async meGusta(){
+    await this.restService.crearMeGustaPelicula(this.restService.token.success.id, this.PeliId);
+    await this.mostrarMeGustas();
     this.gusta = 1;
   }
   
-  noMeGusta(){
-    this.restService.deleteMeGustaPelicula('tok', this.PeliId, this.restService.token.success.id);
+  async noMeGusta(){
+    await this.restService.deleteMeGustaPelicula('tok', this.PeliId, this.restService.token.success.id);
+    await this.mostrarMeGustas();
     this.gusta = 0;
   }
 

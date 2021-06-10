@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>
+      Mis Peliculas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="custom" color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let pelicula of Peliculas">
+      <ion-card button="true" class="cardcontent">
+        <ion-card-header class="nopadding">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-card-subtitle class="Titulo">{{pelicula.pelis.nombre}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-img class="imagen" src="assets/{{pelicula.pelis.imagen}}" height="300"> </ion-img>
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-subtitle class="description">{{pelicula.pelis.sipnosis | slice:0:60}}...</ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+          </ion-grid>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

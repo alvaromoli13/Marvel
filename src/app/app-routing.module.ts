@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'mis-peliculas',
+    loadChildren: () => import('./pages/mis-peliculas/mis-peliculas.module').then( m => m.MisPeliculasPageModule)
+  },
+  {
+    path: 'mis-personajes',
+    loadChildren: () => import('./pages/mis-personajes/mis-personajes.module').then( m => m.MisPersonajesPageModule)
   }
 ];
 @NgModule({

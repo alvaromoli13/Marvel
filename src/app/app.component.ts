@@ -17,10 +17,12 @@ export class AppComponent {
   }
 
   misPelis(){
+    this.router.navigate(['/mis-peliculas']);
     this.menuCtrl.close();
   }
 
   misPersonajes(){
+    this.router.navigate(['/mis-personajes']);
     this.menuCtrl.close();
   }
 

@@ -28,6 +28,24 @@ export class RestService {
     });
   }
 
+  register(name:any, email:any, password:any, c_password:any) {
+    return new Promise<any>(resolve => {
+      this.http.post(this.apiUrl + '/register',
+      {
+        name: name,
+        email: email,
+        password: password,
+        c_password: c_password
+      })
+        .subscribe(data => {
+          this.token = data;
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
   async getCharacters(tok: any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/personajes', {
@@ -407,6 +425,32 @@ export class RestService {
   async deleteGuardadoPelicula(tok?: any, idPelicula?: any, idUsuario?: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/eliminarGPelicula/'+idPelicula+'.'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async getPersonajesGuardados(tok?: any, idUsuario?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/personajesAsociados/'+idUsuario, {
+        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  async getPeliculasGuardadas(tok?: any, idUsuario?:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/peliculasAsociadas/'+idUsuario, {
         // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
       })
         .subscribe(data => {
