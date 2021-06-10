@@ -13,6 +13,7 @@ export class Tab1Page {
 
   admin = this.restService.token.success.admin;
   peliculas: any;
+  textoBuscar = '';
   constructor(public modalController: ModalController, public restService: RestService) {}
 
   ionViewDidEnter(){
@@ -48,6 +49,10 @@ export class Tab1Page {
     this.restService.getFilms(this.restService.token.success.token).then(data=>{
       this.peliculas = data.Peliculas;
     })
+  }
+
+  buscar( event ){
+    this.textoBuscar = event.detail.value;
   }
 
 }

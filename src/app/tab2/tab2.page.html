@@ -7,12 +7,13 @@
       <ion-menu-button menu="custom" color="light"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar color="danger" animated (ionChange)="buscar( $event )"></ion-searchbar>
 </ion-header>
 
 <ion-content>
 
     <ion-grid>
-    <ion-row *ngFor="let personaje of personajes">
+    <ion-row *ngFor="let personaje of personajes | filtroPersonaje: textoBuscar">
       <ion-card button="true" class="cardcontent" (click)="abrirPersonaje(personaje.nombre, personaje.descripcion, personaje.imagen, personaje.idSaga, personaje.id)">
         <ion-card-header class="nopadding">
           <ion-grid>

@@ -7,11 +7,12 @@
       <ion-menu-button menu="custom" color="light"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar color="danger" animated (ionChange)="buscar( $event )"></ion-searchbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let pelicula of peliculas">
+    <ion-row *ngFor="let pelicula of peliculas | filtroPeli: textoBuscar">
       <ion-card button="true" class="cardcontent" (click)="abrirPeli(pelicula.nombre, pelicula.idSaga, pelicula.imagen, pelicula.sipnosis, pelicula.estreno, pelicula.id)">
         <ion-card-header class="nopadding">
           <ion-grid>

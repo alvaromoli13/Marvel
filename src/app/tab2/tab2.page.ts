@@ -18,6 +18,7 @@ export class Tab2Page {
   }
   personajes: any;
   admin=this.restService.token.success.admin;
+  textoBuscar= '';
 
   ionViewDidEnter(){
     this.getPersonajes()
@@ -52,6 +53,10 @@ export class Tab2Page {
     then(data=>{
       this.personajes = data.Personajes;
     })
+  }
+
+  buscar( event ){
+    this.textoBuscar = event.detail.value;
   }
   
 

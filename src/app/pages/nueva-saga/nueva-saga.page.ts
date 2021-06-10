@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormControl } from '@angular/forms';
 import { RestService } from '../../services/rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nueva-saga',
@@ -10,7 +11,7 @@ import { RestService } from '../../services/rest.service';
 })
 export class NuevaSagaPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController, public restService: RestService) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService, public router: Router) { }
 
   estreno = new FormControl('');
   nombre = new FormControl('');
@@ -30,6 +31,7 @@ export class NuevaSagaPage implements OnInit {
       console.log(data);
     })
     this.dismiss();
+    this.router.navigate(['/tabs/tab3']);
   }
 
   dismiss() {
