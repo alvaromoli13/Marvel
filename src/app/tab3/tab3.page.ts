@@ -29,7 +29,7 @@ export class Tab3Page {
   }
 
   getSagas(){
-    this.restService.getSagas().then(data=>{
+    this.restService.getSagas(this.restService.token.success.token).then(data=>{
       this.sagas = data.Sagas;
     })
   }
@@ -48,7 +48,7 @@ export class Tab3Page {
         }, {
           text: 'Si',
           handler: () => {
-            this.restService.deleteSaga('aaa', idSaga).then(data=>{
+            this.restService.deleteSaga(this.restService.token.success.token, idSaga).then(data=>{
               console.log(data)
             })
           }

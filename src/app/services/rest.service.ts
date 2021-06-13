@@ -92,7 +92,7 @@ export class RestService {
     });
   }
 
-  async createFilm(nombre:any, descripcion:any, imagen:any, idSaga:any, estreno:any) {
+  async createFilm(tok:any, nombre:any, descripcion:any, imagen:any, idSaga:any, estreno:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/peliculas',
       {
@@ -103,7 +103,7 @@ export class RestService {
         estreno: estreno
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -113,7 +113,7 @@ export class RestService {
     });
   }
 
-  async createSaga(nombre:any, estreno:any) {
+  async createSaga(tok:any, nombre:any, estreno:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/sagas',
       {
@@ -121,7 +121,7 @@ export class RestService {
         estreno: estreno,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -132,10 +132,10 @@ export class RestService {
   }
 
 
-  async getSaga(tok?: any, id?:any) {
+  async getSaga(tok: any, id:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/sagas/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -145,10 +145,10 @@ export class RestService {
     });
   }
 
-  async getSagas(tok?: any) {
+  async getSagas(tok: any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/sagas', {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -158,10 +158,10 @@ export class RestService {
     });
   }
 
-  async deleteSaga(tok?: any, id?: any) {
+  async deleteSaga(tok: any, id: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/sagas/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -171,10 +171,10 @@ export class RestService {
     });
   }
 
-  async deleteFilm(tok?: any, id?: any) {
+  async deleteFilm(tok: any, id: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/peliculas/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -184,10 +184,10 @@ export class RestService {
     });
   }
 
-  async deleteCharacter(tok?: any, id?: any) {
+  async deleteCharacter(tok: any, id: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/personajes/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -197,10 +197,10 @@ export class RestService {
     });
   }
 
-  async getComentarios(tok?: any, id?:any) {
+  async getComentarios(tok: any, id:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/comentariosPeli/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -210,14 +210,14 @@ export class RestService {
     });
   }
 
-  async bloquearComentario(id:any) {
+  async bloquearComentario(tok:any, id:any) {
     return await new Promise<any>(resolve => {
       this.http.put(this.apiUrl + '/comentarios/'+id,
       {
         bloqueado: 1,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -227,7 +227,7 @@ export class RestService {
     });
   }
 
-  async crearComentario(descripcion:any, idUsuario:any, idPelicula:any) {
+  async crearComentario(tok:any, descripcion:any, idUsuario:any, idPelicula:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/comentarios',
       {
@@ -236,7 +236,7 @@ export class RestService {
         idPelicula: idPelicula
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -246,10 +246,10 @@ export class RestService {
     });
   }
 
-  async getComentario(tok?: any, id?:any) {
+  async getComentario(tok: any, id:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/comentarios/'+id, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -259,10 +259,10 @@ export class RestService {
     });
   }
 
-  async getMeGustaTotalesPersonaje(tok?: any, idPersonaje?:any) {
+  async getMeGustaTotalesPersonaje(tok: any, idPersonaje?:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/meGustaPersonaje/'+idPersonaje, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -272,7 +272,7 @@ export class RestService {
     });
   }
 
-  async crearMeGustaPersonaje(idUsuario:any, idPersonaje:any) {
+  async crearMeGustaPersonaje(tok:any, idUsuario:any, idPersonaje:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/meGustaPersonajes',
       {
@@ -280,7 +280,7 @@ export class RestService {
         idPersonaje: idPersonaje,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -290,10 +290,10 @@ export class RestService {
     });
   }
 
-  async deleteMeGustaPersonaje(tok?: any, idPersonaje?: any, idUsuario?: any) {
+  async deleteMeGustaPersonaje(tok: any, idPersonaje: any, idUsuario: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/eliminarMPersonaje/'+idPersonaje+'.'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -303,10 +303,10 @@ export class RestService {
     });
   }
 
-  async getGuardadosTotalesPersonaje(tok?: any, idPersonaje?:any) {
+  async getGuardadosTotalesPersonaje(tok: any, idPersonaje:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/guardadoPersonaje/'+idPersonaje, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -316,7 +316,7 @@ export class RestService {
     });
   }
 
-  async crearGuardadoPersonaje(idUsuario:any, idPersonaje:any) {
+  async crearGuardadoPersonaje(tok:any, idUsuario:any, idPersonaje:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/guardadoPersonajes',
       {
@@ -324,7 +324,7 @@ export class RestService {
         idPersonaje: idPersonaje,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -334,10 +334,10 @@ export class RestService {
     });
   }
 
-  async deleteGuardadoPersonaje(tok?: any, idPersonaje?: any, idUsuario?: any) {
+  async deleteGuardadoPersonaje(tok: any, idPersonaje: any, idUsuario: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/eliminarGPersonaje/'+idPersonaje+'.'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -347,10 +347,10 @@ export class RestService {
     });
   }
 
-  async getMeGustaTotalesPelicula(tok?: any, idPelicula?:any) {
+  async getMeGustaTotalesPelicula(tok: any, idPelicula:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/meGustaPelicula/'+idPelicula, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -360,7 +360,7 @@ export class RestService {
     });
   }
 
-  async crearMeGustaPelicula(idUsuario:any, idPelicula:any) {
+  async crearMeGustaPelicula(tok:any, idUsuario:any, idPelicula:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/meGustaPeliculas',
       {
@@ -368,7 +368,7 @@ export class RestService {
         idPelicula: idPelicula,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -378,10 +378,10 @@ export class RestService {
     });
   }
    
-  async deleteMeGustaPelicula(tok?: any, idPelicula?: any, idUsuario?: any) {
+  async deleteMeGustaPelicula(tok: any, idPelicula: any, idUsuario: any) {
     return await new Promise<any>(resolve => {
-      this.http.delete(this.apiUrl + '/eliminarMPelicula/'+idPelicula+'.'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+      this.http.delete(this.apiUrl + '/eliminarMPeli/'+idPelicula+'.'+idUsuario, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -391,10 +391,10 @@ export class RestService {
     });
   }
 
-  async getGuardadosTotalesPelicula(tok?: any, idPelicula?:any) {
+  async getGuardadosTotalesPelicula(tok: any, idPelicula:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/guardadoPelicula/'+idPelicula, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -404,7 +404,7 @@ export class RestService {
     });
   }
 
-  async crearGuardadoPelicula(idUsuario:any, idPelicula:any) {
+  async crearGuardadoPelicula(tok:any, idUsuario:any, idPelicula:any) {
     return await new Promise<any>(resolve => {
       this.http.post(this.apiUrl + '/guardadoPeliculas',
       {
@@ -412,7 +412,7 @@ export class RestService {
         idPelicula: idPelicula,
       },
       {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
       })
       .subscribe(data => {
         resolve(data);
@@ -422,10 +422,10 @@ export class RestService {
     });
   }
 
-  async deleteGuardadoPelicula(tok?: any, idPelicula?: any, idUsuario?: any) {
+  async deleteGuardadoPelicula(tok: any, idPelicula: any, idUsuario: any) {
     return await new Promise<any>(resolve => {
       this.http.delete(this.apiUrl + '/eliminarGPelicula/'+idPelicula+'.'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -435,10 +435,10 @@ export class RestService {
     });
   }
 
-  async getPersonajesGuardados(tok?: any, idUsuario?:any) {
+  async getPersonajesGuardados(tok: any, idUsuario:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/personajesAsociados/'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -448,10 +448,10 @@ export class RestService {
     });
   }
 
-  async getPeliculasGuardadas(tok?: any, idUsuario?:any) {
+  async getPeliculasGuardadas(tok: any, idUsuario:any) {
     return await new Promise<any>(resolve => {
       this.http.get(this.apiUrl + '/peliculasAsociadas/'+idUsuario, {
-        // headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
       })
         .subscribe(data => {
           resolve(data);
@@ -461,6 +461,8 @@ export class RestService {
     });
   }
 
-  
+  cerrarSesion(){
+    this.token = null;
+  }
 
 }

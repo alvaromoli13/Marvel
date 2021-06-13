@@ -27,7 +27,7 @@ export class NuevaSagaPage implements OnInit {
 
   registrar(){
     this.ajustarFecha();
-    this.restService.createSaga(this.nombre.value, this.fechaEstreno).then(data=>{
+    this.restService.createSaga(this.restService.token.success.token,this.nombre.value, this.fechaEstreno).then(data=>{
       console.log(data);
     })
     this.dismiss();

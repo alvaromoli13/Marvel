@@ -35,7 +35,7 @@ export class PersonajePage implements OnInit {
   }
 
   getSaga(){
-    this.restService.getSaga('aa', this.SagaId).then(data =>{
+    this.restService.getSaga(this.restService.token.success.token, this.SagaId).then(data =>{
       this.saga = data.Saga[0].nombre
     })
   }
@@ -59,17 +59,17 @@ export class PersonajePage implements OnInit {
   }
 
   guardar(){
-    this.restService.crearGuardadoPersonaje(this.restService.token.success.id, this.PersoId);
+    this.restService.crearGuardadoPersonaje(this.restService.token.success.token,this.restService.token.success.id, this.PersoId);
     this.guarda = 1;
   }
 
   noGuardar(){
-    this.restService.deleteGuardadoPersonaje('token', this.PersoId, this.restService.token.success.id)
+    this.restService.deleteGuardadoPersonaje(this.restService.token.success.token, this.PersoId, this.restService.token.success.id)
     this.guarda = 0;
   }
 
   async meGusta(){
-    await this.restService.crearMeGustaPersonaje(this.restService.token.success.id, this.PersoId);
+    await this.restService.crearMeGustaPersonaje(this.restService.token.success.token,this.restService.token.success.id, this.PersoId);
     await this.mostrarMeGustas();
     this.gusta = 1;
   
@@ -77,14 +77,14 @@ export class PersonajePage implements OnInit {
   }
 
   async noMeGusta(){
-    await this.restService.deleteMeGustaPersonaje('token',this.PersoId, this.restService.token.success.id);
+    await this.restService.deleteMeGustaPersonaje(this.restService.token.success.token,this.PersoId, this.restService.token.success.id);
     await this.mostrarMeGustas();
     this.gusta = 0;
     
   }
 
   mostrarGuardados(){
-    this.restService.getGuardadosTotalesPersonaje('token', this.PersoId).then(data=>{
+    this.restService.getGuardadosTotalesPersonaje(this.restService.token.success.token, this.PersoId).then(data=>{
       this.guardados = data.Guardado;
       for(let i = 0; i<this.guardados.length; i++){
         if(this.guardados[i].idUsuario == this.restService.token.success.id){
@@ -95,7 +95,7 @@ export class PersonajePage implements OnInit {
   }
 
   async mostrarMeGustas(){
-    this.restService.getMeGustaTotalesPersonaje('token', this.PersoId).then(data=>{
+    this.restService.getMeGustaTotalesPersonaje(this.restService.token.success.token, this.PersoId).then(data=>{
       this.meGustas = data.MeGusta;
       for(let i = 0; i<this.meGustas.length; i++){
         if(this.meGustas[i].idUsuario == this.restService.token.success.id){
@@ -119,7 +119,7 @@ export class PersonajePage implements OnInit {
         }, {
           text: 'Si',
           handler: () => {
-            this.restService.deleteCharacter('aaa', idPersonaje).then(data=>{
+            this.restService.deleteCharacter(this.restService.token.success.token, idPersonaje).then(data=>{
               console.log(data)
             })
           }

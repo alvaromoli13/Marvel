@@ -39,7 +39,7 @@ export class NuevoPersonajePage implements OnInit {
   }
 
   getsagas(){
-    this.restService.getSagas().then(data=>{
+    this.restService.getSagas(this.restService.token.success.token).then(data=>{
       this.sagas = data.Sagas
     })
   }

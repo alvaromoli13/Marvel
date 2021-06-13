@@ -50,7 +50,7 @@ export class NuevaPeliPage implements OnInit {
 
   registrar(){
     this.ajustarFechaImagen();
-    this.restService.createFilm(this.titulo.value, this.sinopsis.value, this.imagenBuena, this.saga.value, this.fechaEstrenoBuena).then(data=>{
+    this.restService.createFilm(this.restService.token.success.token,this.titulo.value, this.sinopsis.value, this.imagenBuena, this.saga.value, this.fechaEstrenoBuena).then(data=>{
       console.log(data);
     })
     this.dismiss();
@@ -58,7 +58,7 @@ export class NuevaPeliPage implements OnInit {
   }
 
   getsagas(){
-    this.restService.getSagas().then(data=>{
+    this.restService.getSagas(this.restService.token.success.token).then(data=>{
       this.sagas = data.Sagas
     })
   }

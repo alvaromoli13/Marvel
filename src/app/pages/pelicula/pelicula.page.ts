@@ -54,35 +54,35 @@ export class PeliculaPage implements OnInit {
   }
 
   getSaga(){
-    this.restService.getSaga('aa', this.SagaId).then(data =>{
+    this.restService.getSaga(this.restService.token.success.token, this.SagaId).then(data =>{
       this.saga = data.Saga[0].nombre
     })
   }
 
   guardar(){
-    this.restService.crearGuardadoPelicula(this.restService.token.success.id, this.PeliId);
+    this.restService.crearGuardadoPelicula(this.restService.token.success.token,this.restService.token.success.id, this.PeliId);
     this.guarda = 1;
   }
 
   noGuardar(){
-    this.restService.deleteGuardadoPelicula('tok', this.PeliId, this.restService.token.success.id);
+    this.restService.deleteGuardadoPelicula(this.restService.token.success.token, this.PeliId, this.restService.token.success.id);
     this.guarda=0;
   }
 
   async meGusta(){
-    await this.restService.crearMeGustaPelicula(this.restService.token.success.id, this.PeliId);
+    await this.restService.crearMeGustaPelicula(this.restService.token.success.token,this.restService.token.success.id, this.PeliId);
     await this.mostrarMeGustas();
     this.gusta = 1;
   }
   
   async noMeGusta(){
-    await this.restService.deleteMeGustaPelicula('tok', this.PeliId, this.restService.token.success.id);
+    await this.restService.deleteMeGustaPelicula(this.restService.token.success.token, this.PeliId, this.restService.token.success.id);
     await this.mostrarMeGustas();
     this.gusta = 0;
   }
 
   mostrarGuardados(){
-    this.restService.getGuardadosTotalesPelicula('token', this.PeliId).then(data=>{
+    this.restService.getGuardadosTotalesPelicula(this.restService.token.success.token, this.PeliId).then(data=>{
       this.guardados = data.Guardado;
       for(let i = 0; i<this.guardados.length; i++){
         if(this.guardados[i].idUsuario == this.restService.token.success.id){
@@ -93,7 +93,7 @@ export class PeliculaPage implements OnInit {
   }
 
   mostrarMeGustas(){
-    this.restService.getMeGustaTotalesPelicula('token', this.PeliId).then(data=>{
+    this.restService.getMeGustaTotalesPelicula(this.restService.token.success.token, this.PeliId).then(data=>{
       this.meGustas = data.MeGusta;
       for(let i = 0; i<this.meGustas.length; i++){
         if(this.meGustas[i].idUsuario == this.restService.token.success.id){
@@ -117,7 +117,7 @@ export class PeliculaPage implements OnInit {
         }, {
           text: 'Si',
           handler: () => {
-            this.restService.deleteFilm('aaa', idPeli).then(data=>{
+            this.restService.deleteFilm(this.restService.token.success.token, idPeli).then(data=>{
               console.log(data)
             })
           }
@@ -149,7 +149,7 @@ export class PeliculaPage implements OnInit {
         }, {
           text: 'Crear',
           handler: (dato) => {
-            this.restService.crearComentario(dato.comentario, this.restService.token.success.id, this.PeliId)
+            this.restService.crearComentario(this.restService.token.success.token,dato.comentario, this.restService.token.success.id, this.PeliId)
           }
         }
       ]
@@ -169,7 +169,7 @@ export class PeliculaPage implements OnInit {
   }
 
   getComentarios(){
-    this.restService.getComentarios('aaa', this.PeliId).then(data=>{
+    this.restService.getComentarios(this.restService.token.success.token, this.PeliId).then(data=>{
       this.comentarios = data.Comentario;
     })
   }
@@ -188,7 +188,7 @@ export class PeliculaPage implements OnInit {
         }, {
           text: 'Si',
           handler: () => {
-            this.restService.bloquearComentario(idComentario).then(data=>{
+            this.restService.bloquearComentario(this.restService.token.success.token,idComentario).then(data=>{
 
             })
           }
