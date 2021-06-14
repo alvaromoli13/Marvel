@@ -32,5 +32,10 @@ export class AppComponent {
     this.router.navigate(['/login']);
     this.menuCtrl.close();
   }
+
+  rankingPelis(){
+    this.router.navigate(['/ranking-peliculas']);
+    this.menuCtrl.close();
+  }
   
 }

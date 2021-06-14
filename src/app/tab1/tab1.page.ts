@@ -64,11 +64,7 @@ export class Tab1Page {
   async getPelis(){
     await this.restService.getFilms(this.restService.token.success.token).then(data=>{
       this.peliculas = data.Peliculas;
-      
     })
-    this.peliculas.sort();
-    console.log(this.peliculas);
-
   }
 
   buscar( event ){

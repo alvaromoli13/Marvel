@@ -7,10 +7,10 @@
       <span button="true" (click)=login()>Iniciar Sesion</span>
       <p button="true" (click)=registrarse()>Registrarse</p>
     </div>
-
+    
     <div class="login" *ngIf="noRegistrado">
       <input type="text" name="name" placeholder="Nombre" [formControl]="name">
-      <input type="email" name="email" placeholder="Email" [formControl]="email">
+      <input type="email" name="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" [formControl]="email">
       <input type="password" name="password" placeholder="Contraseña" [formControl]="password">
       <input type="password" name="c_password" placeholder="Confirmar Contraseña" [formControl]="c_password">
       <span button="true" (click)=crearCuenta()>Crear Cuenta</span>

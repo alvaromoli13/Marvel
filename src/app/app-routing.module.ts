@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'mis-personajes',
     loadChildren: () => import('./pages/mis-personajes/mis-personajes.module').then( m => m.MisPersonajesPageModule)
+  },
+  {
+    path: 'ranking-peliculas',
+    loadChildren: () => import('./pages/ranking-peliculas/ranking-peliculas.module').then( m => m.RankingPeliculasPageModule)
   }
 ];
 @NgModule({

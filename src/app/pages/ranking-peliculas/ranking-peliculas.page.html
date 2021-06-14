@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>
+      Top Peliculas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="custom" color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <h1 class="titulo">TOP 1 <ion-icon name="heart"></ion-icon></h1>
+    <ion-row>
+      <ion-card button="true" class="cardcontent" (click)="abrirPeli(peli1.nombre, peli1.idSaga, peli1.imagen, peli1.sipnosis, peli1.estreno, peli1.id)">
+        <ion-card-header class="nopadding">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-card-subtitle class="Titulo">{{peli1.nombre}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-img class="imagen" src="assets/{{peli1.imagen}}" height="300"> </ion-img>
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-subtitle class="description">{{peli1.sipnosis | slice:0:60}}...</ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+          </ion-grid>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <h2 class="titulo">TOP 2 <ion-icon name="heart-half"></ion-icon></h2>
+    <ion-row>
+      <ion-card button="true" class="cardcontent" (click)="abrirPeli(peli2.nombre, peli2.idSaga, peli2.imagen, peli2.sipnosis, peli2.estreno, peli2.id)">
+        <ion-card-header class="nopadding">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-card-subtitle class="Titulo">{{peli2.nombre}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-img class="imagen" src="assets/{{peli2.imagen}}" height="300"> </ion-img>
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-subtitle class="description">{{peli2.sipnosis | slice:0:60}}...</ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+          </ion-grid>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <h3 class="titulo">TOP 3 <ion-icon name="heart-outline"></ion-icon></h3>
+    <ion-row>
+      <ion-card button="true" class="cardcontent" (click)="abrirPeli(peli3.nombre, peli3.idSaga, peli3.imagen, peli3.sipnosis, peli3.estreno, peli3.id)">
+        <ion-card-header class="nopadding">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-card-subtitle class="Titulo">{{peli3.nombre}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-img class="imagen" src="assets/{{peli3.imagen}}" height="300"> </ion-img>
+              </ion-col>
+              <ion-col size="12">
+                <ion-card-subtitle class="description">{{peli3.sipnosis | slice:0:60}}...</ion-card-subtitle>
+              </ion-col>
+            </ion-row> 
+          </ion-grid>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

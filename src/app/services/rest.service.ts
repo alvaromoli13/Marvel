@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ export class RestService {
 
   apiUrl = 'http://marvelfilms.allsites.es/public/api';
   token: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public alertController: AlertController) { }
 
 
   login(email:any, password:any) {
@@ -22,7 +23,16 @@ export class RestService {
         .subscribe(data => {
           this.token = data;
           resolve(data);
-        }, err => {
+        }, async err => {
+          const alert = await this.alertController.create({
+            cssClass: 'my-custom-class',
+            header: 'Error',
+            subHeader: 'Credenciales no validas',
+            message: '',
+            buttons: ['OK']
+          });
+      
+          await alert.present();
           console.log(err);
         });
     });
@@ -40,7 +50,15 @@ export class RestService {
         .subscribe(data => {
           this.token = data;
           resolve(data);
-        }, err => {
+        }, async err => {
+          const alert = await this.alertController.create({
+            cssClass: 'my-custom-class',
+            header: 'Error',
+            subHeader: 'E-mail no valido o no disponible',
+            message: '',
+            buttons: ['OK']
+          });
+          await alert.present();
           console.log(err);
         });
     });
@@ -463,6 +481,19 @@ export class RestService {
 
   cerrarSesion(){
     this.token = null;
+  }
+
+  async getFilm(tok: any, id:any) {
+    return await new Promise<any>(resolve => {
+      this.http.get(this.apiUrl + '/peliculas/'+id, {
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok),
+      })
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
   }
 
 }

@@ -35,23 +35,30 @@ export class LoginPage implements OnInit {
   }
 
   crearCuenta(){
-    if(this.password.value == this.c_password.value){
-      if(this.password.value.length >= 6 ){
-        this.restService.register(this.name.value, this.email.value, this.password.value, this.c_password.value).then(data=>{
-          if (this.restService.token.success.token != null){
-            this.router.navigate(['/tabs']);
-          }
-        })
-      }
-      else{
-        this.contrasCortas()
-      }
-    
-      
+    if(this.name.value == ''){
+      this.contrasCortas('El campo name debe de ser rellenado');
     }
     else{
-      this.contrasDistintas()
+      if(this.password.value == this.c_password.value){
+        if(this.password.value.length >= 6 ){
+          this.restService.register(this.name.value, this.email.value, this.password.value, this.c_password.value).then(data=>{
+            if (this.restService.token.success.token != null){
+              this.router.navigate(['/tabs']);
+            }
+          })
+        }
+        else{
+          this.contrasCortas('La contraseña debe de etner al menos 6 caracteres');
+  
+        }
+      
+        
+      }
+      else{
+        this.contrasCortas('Las contraseñas deben de coincidir');
+      }
     }
+    
   }
 
   login(){
@@ -63,23 +70,12 @@ export class LoginPage implements OnInit {
     
   }
 
-  async contrasDistintas() {
+
+  async contrasCortas(texto) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Constraseñas Distintas',
-      subHeader: 'Las contraseñas no coinciden',
-      message: '',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-
-  async contrasCortas() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Tamaño no adecuado',
-      subHeader: 'La contraseña debe tener al menos 6 caracteres',
+      header: 'Error',
+      subHeader: texto,
       message: '',
       buttons: ['OK']
     });
