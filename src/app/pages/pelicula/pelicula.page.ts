@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { NuevaPeliPage } from '../nueva-peli/nueva-peli.page';
 import { RestService } from '../../services/rest.service';
+import { Tab1Page } from 'src/app/tab1/tab1.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pelicula',
@@ -10,7 +12,7 @@ import { RestService } from '../../services/rest.service';
 })
 export class PeliculaPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController, public restService: RestService, public alertController : AlertController) { }
+  constructor(public modalCtrl: ModalController, public restService: RestService, public alertController : AlertController, public router: Router) { }
   admin = this.restService.token.success.admin;
   guarda = 0;
   gusta = 0;
@@ -41,6 +43,7 @@ export class PeliculaPage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+    this.router.navigate(['/tabs/tab1']);
   }
 
   async presentModal() {
@@ -120,6 +123,7 @@ export class PeliculaPage implements OnInit {
             this.restService.deleteFilm(this.restService.token.success.token, idPeli).then(data=>{
               console.log(data)
             })
+            this.dismiss();
           }
         }
       ]
@@ -148,8 +152,9 @@ export class PeliculaPage implements OnInit {
           }
         }, {
           text: 'Crear',
-          handler: (dato) => {
-            this.restService.crearComentario(this.restService.token.success.token,dato.comentario, this.restService.token.success.id, this.PeliId)
+          handler: async (dato) => {
+            await this.restService.crearComentario(this.restService.token.success.token,dato.comentario, this.restService.token.success.id, this.PeliId);
+            await this.getComentarios();
           }
         }
       ]
@@ -187,10 +192,10 @@ export class PeliculaPage implements OnInit {
           }
         }, {
           text: 'Si',
-          handler: () => {
-            this.restService.bloquearComentario(this.restService.token.success.token,idComentario).then(data=>{
-
+          handler: async () => {
+            await this.restService.bloquearComentario(this.restService.token.success.token,idComentario).then(data=>{
             })
+            await this.getComentarios()
           }
         }
       ]

@@ -54,7 +54,6 @@ export class NuevaPeliPage implements OnInit {
       console.log(data);
     })
     this.dismiss();
-    this.router.navigate(['/tabs/tab1']);
   }
 
   getsagas(){

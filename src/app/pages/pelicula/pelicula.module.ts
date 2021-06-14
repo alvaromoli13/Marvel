@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PeliculaPageRoutingModule } from './pelicula-routing.module';
 
 import { PeliculaPage } from './pelicula.page';
+import { Tab1Page } from 'src/app/tab1/tab1.page';
 
 @NgModule({
   imports: [

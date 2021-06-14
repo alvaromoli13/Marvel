@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from './pipes/pipes.module';
+import { Tab1Page } from './tab1/tab1.page';
 
 @NgModule({
   declarations: [AppComponent],

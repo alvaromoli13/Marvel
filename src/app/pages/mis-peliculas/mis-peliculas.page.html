@@ -12,7 +12,7 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let pelicula of Peliculas">
-      <ion-card button="true" class="cardcontent">
+      <ion-card button="true" class="cardcontent" (click)="abrirPeli(pelicula.pelis.nombre, pelicula.pelis.idSaga, pelicula.pelis.imagen, pelicula.pelis.sipnosis, pelicula.pelis.estreno, pelicula.pelis.id)">
         <ion-card-header class="nopadding">
           <ion-grid>
             <ion-row>

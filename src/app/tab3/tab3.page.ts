@@ -14,6 +14,7 @@ export class Tab3Page {
   constructor(public modalController: ModalController, public restService: RestService, public alertController: AlertController) {}
 
   sagas:any;
+  
   ionViewDidEnter(){
     this.getSagas()
   }
@@ -51,6 +52,7 @@ export class Tab3Page {
             this.restService.deleteSaga(this.restService.token.success.token, idSaga).then(data=>{
               console.log(data)
             })
+            this.getSagas();
           }
         }
       ]

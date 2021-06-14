@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
       if(this.password.value.length >= 6 ){
         this.restService.register(this.name.value, this.email.value, this.password.value, this.c_password.value).then(data=>{
           if (this.restService.token.success.token != null){
-            this.router.navigate(['/tab-principal']);
+            this.router.navigate(['/tabs']);
           }
         })
       }

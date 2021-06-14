@@ -13,12 +13,28 @@ export class Tab1Page {
 
   admin = this.restService.token.success.admin;
   peliculas: any;
+  primero: any;
+  segundo: any;
+  tercero: any;  
+  valorPrimero: any;
+  valorSegundo: any;
+  valorTercero: any; 
+  
   textoBuscar = '';
-  constructor(public modalController: ModalController, public restService: RestService) {}
+  constructor(public modalController: ModalController, public restService: RestService) {
+    this.getPelis();
+  }
 
   ionViewDidEnter(){
     this.getPelis();
+    this.ranking();
   }
+
+
+  ionViewWillEnter(){
+    this.getPelis();
+  }
+
   async abrirPeli(titulo, sagaid, imagen, sipnosis, estreno, peliId) {
     const modal = await this.modalController.create({
       component: PeliculaPage,
@@ -45,14 +61,56 @@ export class Tab1Page {
     return await modal.present();
   }
 
-  getPelis(){
-    this.restService.getFilms(this.restService.token.success.token).then(data=>{
+  async getPelis(){
+    await this.restService.getFilms(this.restService.token.success.token).then(data=>{
       this.peliculas = data.Peliculas;
+      
     })
+    this.peliculas.sort();
+    console.log(this.peliculas);
+
   }
 
   buscar( event ){
     this.textoBuscar = event.detail.value;
+  }
+
+  async ranking(){
+    this.primero = 0;
+    this.segundo = 0;
+    this.tercero = 0;
+    this.valorPrimero = 0;
+    this.valorSegundo = 0;
+    this.valorTercero = 0;
+
+    await this.getPelis();
+    for(let i = 0; i < this.peliculas.length; i ++){
+      await this.restService.getMeGustaTotalesPelicula(this.restService.token.success.token, this.peliculas[i].id).then(data =>{
+        if(data.MeGusta.length > this.valorPrimero){
+          this.valorTercero = this.valorSegundo;
+          this.tercero = this.segundo;
+          this.valorSegundo = this.valorPrimero;
+          this.segundo = this.primero
+
+          this.primero = this.peliculas[i].id;
+          this.valorPrimero = data.MeGusta.length;
+        }
+        else if(data.MeGusta.length > this.valorSegundo){
+          this.valorTercero = this.valorSegundo;
+          this.tercero = this.segundo;
+          this.segundo = this.peliculas[i].id;
+          this.valorSegundo = data.MeGusta.length;
+        }
+        else if(data.MeGusta.length > this.valorTercero){
+          this.tercero = this.peliculas[i].id;
+          this.valorTercero = data.MeGusta.length;
+        }
+      })
+    }
+
+    console.log(this.valorPrimero);
+    console.log(this.valorSegundo);
+    console.log(this.valorTercero);
   }
 
 }
