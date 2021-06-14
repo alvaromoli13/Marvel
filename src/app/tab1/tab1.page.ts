@@ -12,7 +12,7 @@ import { RestService } from '../services/rest.service';
 export class Tab1Page {
 
   admin = this.restService.token.success.admin;
-  peliculas: any;
+  peliculas:any;
   primero: any;
   segundo: any;
   tercero: any;  
@@ -22,7 +22,6 @@ export class Tab1Page {
   
   textoBuscar = '';
   constructor(public modalController: ModalController, public restService: RestService) {
-    this.getPelis();
   }
 
   ionViewDidEnter(){
@@ -56,14 +55,26 @@ export class Tab1Page {
       component: NuevaPeliPage,
       cssClass: 'my-custom-class',
       componentProps: {
+        'PeliId': undefined
       }
     });
     return await modal.present();
   }
 
   async getPelis(){
-    await this.restService.getFilms(this.restService.token.success.token).then(data=>{
+    await this.restService.getFilms(this.restService.token.success.token).then(async data=>{
       this.peliculas = data.Peliculas;
+      await this.peliculas.sort((a,b) =>{
+        if(a.estreno < b.estreno){
+          return 1;
+        }
+
+        if(a.estreno > b.estreno){
+          return -1;
+        }
+
+        return 0;
+      });
     })
   }
 

@@ -496,4 +496,25 @@ export class RestService {
     });
   }
 
+  async updateFilm(tok:any, PeliId:any,nombre:any, descripcion:any, imagen:any, idSaga:any, estreno:any) {
+    return await new Promise<any>(resolve => {
+      this.http.put(this.apiUrl + '/peliculas/'+PeliId,
+      {
+        nombre: nombre,
+        sipnosis: descripcion,
+        imagen: imagen,
+        idSaga: idSaga,
+        estreno: estreno
+      },
+      {
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }

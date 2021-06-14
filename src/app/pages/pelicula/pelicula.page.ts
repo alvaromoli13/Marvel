@@ -51,6 +51,12 @@ export class PeliculaPage implements OnInit {
       component: NuevaPeliPage,
       cssClass: 'my-custom-class',
       componentProps: {
+        'Titulo': this.Titulo,
+        'SagaId': this.SagaId,
+        'Sipnosis': this.Sipnosis,
+        'Estreno': this.Estreno,
+        'Imagen': this.Imagen,
+        'PeliId': this.PeliId
       }
     });
     return await modal.present();

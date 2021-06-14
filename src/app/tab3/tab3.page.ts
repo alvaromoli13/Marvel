@@ -30,8 +30,19 @@ export class Tab3Page {
   }
 
   getSagas(){
-    this.restService.getSagas(this.restService.token.success.token).then(data=>{
+    this.restService.getSagas(this.restService.token.success.token).then(async data=>{
       this.sagas = data.Sagas;
+      await this.sagas.sort((a,b) =>{
+        if(a.estreno < b.estreno){
+          return 1;
+        }
+
+        if(a.estreno > b.estreno){
+          return -1;
+        }
+
+        return 0;
+      });
     })
   }
 
