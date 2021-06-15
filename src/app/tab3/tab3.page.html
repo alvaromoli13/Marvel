@@ -28,6 +28,9 @@
         <ion-item-options side="start" *ngIf="admin">
           <ion-item-option (click)="deleteSaga(saga.id)" color="danger">Eliminar<ion-icon name="trash-outline"></ion-icon></ion-item-option>
         </ion-item-options>
+        <ion-item-options side="end" *ngIf="admin">
+          <ion-item-option (click)="actualizarSaga(saga.nombre, saga.estreno, saga.id)" color="warning">Actualizar<ion-icon name="create-outline"></ion-icon></ion-item-option>
+        </ion-item-options>
       </ion-item-sliding>
     </ion-row>
   </ion-grid>
@@ -38,4 +41,5 @@
       <ion-icon name="duplicate-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  
 </ion-content>

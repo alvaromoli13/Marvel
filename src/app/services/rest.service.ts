@@ -517,4 +517,42 @@ export class RestService {
     });
   }
 
+  async UpdateCharacter(tok:any, idPersonaje:any, nombre:any, descripcion:any, imagen:any, idSaga:any) {
+    return await new Promise<any>(resolve => {
+      this.http.put(this.apiUrl + '/personajes/'+idPersonaje,
+      {
+        nombre: nombre,
+        descripcion: descripcion,
+        imagen: imagen,
+        idSaga: idSaga
+      },
+      {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  async updateSaga(tok:any,idSaga:any, nombre:any, estreno:any) {
+    return await new Promise<any>(resolve => {
+      this.http.put(this.apiUrl + '/sagas/'+idSaga,
+      {
+        nombre: nombre,
+        estreno: estreno,
+      },
+      {
+         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok)
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }

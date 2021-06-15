@@ -53,6 +53,11 @@ export class PersonajePage implements OnInit {
       component: NuevoPersonajePage,
       cssClass: 'my-custom-class',
       componentProps: {
+        'Nombre': this.Nombre,
+        'Descripcion': this.Descripcion,
+        'Imagen': this.Imagen,
+        'SagaId': this.SagaId,
+        'PersoId': this.PersoId,
       }
     });
     return await modal.present();

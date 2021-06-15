@@ -7,16 +7,17 @@
 <ion-content>
     <ion-item>
         <ion-label position="fixed">Nombre</ion-label>
-        <ion-input class="titulo" [formControl]="nombre"></ion-input>
+        <ion-input class="titulo" [(ngModel)]="Nombre" [formControl]="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating">Fecha Estreno</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" placeholder="Selecciona la Fecha" [formControl]="estreno"></ion-datetime>
+        <ion-datetime displayFormat="DD MMMM YYYY" [(ngModel)]="Estreno" placeholder="Selecciona la Fecha" [formControl]="estreno"></ion-datetime>
     </ion-item>
 
     <ion-item>
-        <label for="enviar" class="crear">CREAR SAGA</label>  
+        <label for="enviar" class="crear" *ngIf="actualizar == 0">CREAR SAGA</label>  
+        <label for="enviar" class="crear" *ngIf="actualizar">ACTUALIZAR SAGA</label>  
         <input id="enviar" type="submit" value="CREAR SAGA" (click)="registrar()">
     </ion-item>
 </ion-content>

@@ -20,9 +20,17 @@ export class NuevoPersonajePage implements OnInit {
   descripcion = new FormControl('');
   imagenBuena: any;
   sagas: any;
+  actualizar:any;
+
+  @Input() Nombre: any;
+  @Input() SagaId: any;
+  @Input() Imagen: any;
+  @Input() Descripcion: any;
+  @Input() PersoId: any;
 
   ngOnInit() {
-    this.getsagas()
+    this.getsagas();
+    this.actualizarNO();
   }
 
   dismiss() {
@@ -31,6 +39,15 @@ export class NuevoPersonajePage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  actualizarNO(){
+    if(this.PersoId == undefined){
+      this.actualizar = 0;
+    }
+    else{
+      this.actualizar = 1;
+    }
   }
 
   ajustarImagen(){
@@ -45,12 +62,27 @@ export class NuevoPersonajePage implements OnInit {
   }
 
   registrar(){
-    this.ajustarImagen();
-    this.restService.createCharacter(this.restService.token.success.token,this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
-      console.log(data)
-    })
+    if(this.actualizar == 0){
+      this.ajustarImagen();
+      this.restService.createCharacter(this.restService.token.success.token,this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
+        
+      })
+    }
+    else{
+      if(this.imagen.value == ''){
+        this.restService.UpdateCharacter(this.restService.token.success.token,this.PersoId ,this.nombre.value, this.descripcion.value, this.Imagen, this.saga.value).then(data=>{
+        
+        })
+      }
+      else{
+        this.ajustarImagen();
+        this.restService.UpdateCharacter(this.restService.token.success.token,this.PersoId ,this.nombre.value, this.descripcion.value, this.imagenBuena, this.saga.value).then(data=>{
+        
+        })
+      }
+    }
+    
     this.dismiss();
-    this.router.navigate(['/tabs/tab2']);
   }
 
 }

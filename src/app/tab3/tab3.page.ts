@@ -29,6 +29,19 @@ export class Tab3Page {
     return await modal.present();
   }
 
+  async actualizarSaga(nombre, estreno, sagaid) {
+    const modal = await this.modalController.create({
+      component: NuevaSagaPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'Nombre':nombre,
+        'Estreno': estreno,
+        'SagaId': sagaid
+      }
+    });
+    return await modal.present();
+  }
+
   getSagas(){
     this.restService.getSagas(this.restService.token.success.token).then(async data=>{
       this.sagas = data.Sagas;

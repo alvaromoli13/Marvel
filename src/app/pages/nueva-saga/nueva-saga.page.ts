@@ -17,8 +17,26 @@ export class NuevaSagaPage implements OnInit {
   nombre = new FormControl('');
   fechaEstreno: any;
 
+  @Input() Nombre: any;
+  @Input() Estreno: any;
+  @Input() SagaId: any;
+
+  actualizar:any;
+
+
   ngOnInit() {
+    this.actualizarNO();
   }
+
+  actualizarNO(){
+    if(this.SagaId == undefined){
+      this.actualizar = 0;
+    }
+    else{
+      this.actualizar = 1;
+    }
+  }
+
 
   ajustarFecha(){
     this.fechaEstreno = this.estreno.value.split('T');
@@ -26,12 +44,20 @@ export class NuevaSagaPage implements OnInit {
   }
 
   registrar(){
-    this.ajustarFecha();
-    this.restService.createSaga(this.restService.token.success.token,this.nombre.value, this.fechaEstreno).then(data=>{
-      console.log(data);
-    })
+    if(this.actualizar == 0){
+      this.ajustarFecha();
+      this.restService.createSaga(this.restService.token.success.token,this.nombre.value, this.fechaEstreno).then(data=>{
+        console.log(data);
+      })
+
+    }
+    else{
+      this.ajustarFecha();
+      this.restService.updateSaga(this.restService.token.success.token, this.SagaId,this.nombre.value, this.fechaEstreno).then(data=>{
+        console.log(data);
+      })
+    }
     this.dismiss();
-    this.router.navigate(['/tabs/tab3']);
   }
 
   dismiss() {
@@ -41,5 +67,7 @@ export class NuevaSagaPage implements OnInit {
       'dismissed': true
     });
   }
+
+
 
 }
