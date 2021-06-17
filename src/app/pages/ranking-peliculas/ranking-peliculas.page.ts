@@ -19,9 +19,9 @@ export class RankingPeliculasPage implements OnInit {
   valorPrimero:any;
   valorSegundo:any;
   valorTercero:any;
-  peli1=[];
-  peli2= [];
-  peli3 = [];
+  peli1:any;
+  peli2:any;
+  peli3:any;
 
   ngOnInit() {
     this.ranking();

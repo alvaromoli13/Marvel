@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { RestService } from 'src/app/services/rest.service';
 import { NuevaSagaPage } from '../nueva-saga/nueva-saga.page';
 
 @Component({
@@ -9,8 +10,8 @@ import { NuevaSagaPage } from '../nueva-saga/nueva-saga.page';
 })
 export class SagaPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
-
+  constructor(public modalCtrl: ModalController, public restService: RestService) { }
+  admin = this.restService.token.success.admin;
   ngOnInit() {
   }
 
