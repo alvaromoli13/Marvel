@@ -84,4 +84,12 @@ export class Tab3Page {
     await alert.present();
   }
 
+  doRefresh(event) {
+
+    setTimeout(async () => {
+      await this.getSagas();
+      event.target.complete();
+    }, 2000);
+  }
+
 }

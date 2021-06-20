@@ -11,7 +11,14 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Actualizando lista...">
+      </ion-refresher-content>
+    </ion-refresher>
     <ion-grid>
     <ion-row *ngFor="let personaje of personajes | filtroPersonaje: textoBuscar">
       <ion-card button="true" class="cardcontent" (click)="abrirPersonaje(personaje.nombre, personaje.descripcion, personaje.imagen, personaje.idSaga, personaje.id)">

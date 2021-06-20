@@ -59,5 +59,12 @@ export class Tab2Page {
     this.textoBuscar = event.detail.value;
   }
   
+  doRefresh(event) {
+
+    setTimeout(async () => {
+      await this.getPersonajes();
+      event.target.complete();
+    }, 2000);
+  }
 
 }

@@ -114,10 +114,17 @@ export class Tab1Page {
         }
       })
     }
-
     console.log(this.valorPrimero);
     console.log(this.valorSegundo);
     console.log(this.valorTercero);
+  }
+
+  doRefresh(event) {
+
+    setTimeout(async () => {
+      await this.getPelis();
+      event.target.complete();
+    }, 2000);
   }
 
 }

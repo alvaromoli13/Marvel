@@ -10,6 +10,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Actualizando lista...">
+      </ion-refresher-content>
+  </ion-refresher>
   <ion-grid>
     <ion-row *ngFor="let saga of sagas">
       <ion-item-sliding>
@@ -17,7 +25,10 @@
           <ion-card button="true" class="cardcontent">
             <ion-card-header class="nopadding">
               <ion-row>
-                <ion-col size="12">
+                <ion-col size="4">
+                  <ion-img class="imagen" src="assets/Marvel.jpg" height="300"> </ion-img>
+                </ion-col>
+                <ion-col size="8">
                   <ion-card-title class="Titulo">{{saga.nombre}}</ion-card-title>
                   <ion-card-title class="Fecha">{{saga.estreno}}</ion-card-title>
                 </ion-col>
